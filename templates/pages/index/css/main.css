@@ -1,0 +1,110 @@
+.header{
+	height: 150px;
+
+}
+
+.contact-info-container{
+height: 90px;
+}
+/*.contact-container{
+	margin-left: 0;
+}*/
+.location-container{
+	margin-left: 0;
+}
+.logo-container{
+	
+	
+}
+.logo{
+	background-image: url("./biban tours.png");
+	background-size: contain;
+	width: 180px;
+	height: 90px;
+	background-repeat: no-repeat;
+	
+}
+
+.icon-1{
+	background-image: url("../../../UI elements/SVGs/Component 2.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 40px;
+	height: 38px;
+	margin-right: 10px;
+	padding: 0;
+	
+}
+.icon-2{
+	background-image: url("../../../UI elements/SVGs/Component.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 40px;
+	height: 45px;
+	margin-right: 10px;
+
+}
+.info-1, .info-2{
+	height: 40px;
+	padding: 0;
+	margin: 0;
+	vertical-align: middle;
+}
+.info-1 p , .info-2 p{
+	line-height: 1;
+	margin:2px;
+	padding: 0;
+
+}
+.info-2 p{
+	margin: 0;
+	line-height: 2;
+}
+.button-wrapper button{
+	border: solid #FF761B .5px;
+	color: #FF761B;
+	border-radius: 5px;
+	padding: 5px 10px 5px 10px;
+	background: transparent;
+}
+
+
+/*-------------------------NavBar----------------------------*/
+
+.navigation-bar{
+	height: 70px;
+
+	background: rgba(158, 158, 158, .12);
+	
+}
+.navigation-bar .nav{
+	margin-left: 30px;
+	height: 100%;
+	align-items: center;
+}
+
+.navigation-bar .nav li a{
+	font-size: 24px;
+	
+	color: rgba(0,0,0,100);
+	text-transform: uppercase;
+	font-weight: 400;
+	
+}
+
+
+
+
+/*------------------Landing-----------------------*/
+
+
+.landing{
+	height: 550px;
+	background: url("../../../UI elements/landing.jpg");
+	background-repeat: no-repeat;
+	background-size: 100% auto;
+	opacity: .8;
+	background-position: 50% 50%;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 89%, 0 100%);
+	clip-path: polygon(0 0, 100% 0, 100% 89%, 0 100%);
+}
