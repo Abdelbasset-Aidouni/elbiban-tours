@@ -60,7 +60,7 @@ height: 90px;
 	margin: 0;
 	line-height: 2;
 }
-.button-wrapper button{
+.contact-info .button-wrapper button{
 	border: solid #FF761B .5px;
 	color: #FF761B;
 	border-radius: 5px;
@@ -223,6 +223,10 @@ height: 90px;
 
 .travel-showcase{
 	background:rgba(158, 158, 158, .12);
+	min-height: 800px;
+	margin-bottom: 0;
+	-webkit-clip-path: polygon(0 0, 100% 0, 100% 89%, 0 100%);
+	clip-path: polygon(0 0, 100% 0, 100% 89%, 0 100%);
 }
 
 .travel-showcase .col-md-2{
@@ -294,4 +298,89 @@ height: 90px;
 	bottom: 0;
 	height: 30%;
 	background: linear-gradient(0deg, #000000 14.56%, rgba(2, 2, 2, 0) 100%);
+}
+
+.info-container .travel-info-container{
+	position: absolute;
+	bottom: 10%;
+	color: white;
+	width: 100%;
+
+
+}
+.travel-info-container .city-name{
+	position: absolute;
+	left: 5%;
+	bottom: 0%;
+	font-size: 18px;
+	font-weight: 100;
+	font-family: 'Oxygen';
+}
+.travel-info-container .price{
+	position: absolute;
+	bottom: 0%;
+	right: 10%;
+}
+
+
+
+/*--------------------------Section-2-----------------------*/
+
+
+
+.section-2{
+	min-height: 500px;
+	background: url("../../../UI elements/section-2.jpg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	background-position: 50% 50%;
+	margin-top: -100px;
+	position: relative;
+	
+
+	clip-path: polygon(0 20%, 100% 0, 100% 80%, 0% 100%);
+}
+.section-2 .section-2-content{
+	position: absolute;
+	top: 20%;
+	height: 70%;
+}
+.section-2 .section-2-title{
+	font-family: 'Oswald';
+	font-weight: 100;
+	font-size: 50px;
+	letter-spacing: 3px;
+	margin-bottom: 0;
+
+	color: white;
+}
+.section-2 .description{
+	
+	font-family: 'Oxygen';
+	font-weight: 100;
+	font-size: 26px;
+	letter-spacing: 3px;
+	text-align: center;
+	line-height: 1;
+	color: rgba(250,250,250,0.7);
+}
+.section-2 .button-wrapper button{
+	background: transparent;
+	padding: 5px 5% 5px 5%;
+	border:solid white 1px;
+	border-radius: 5px;
+	font-size: 30px;
+	font-weight: 100;
+	letter-spacing: 3px;
+	color: white;
+}
+
+
+
+
+/*----------------------Offers-Section--------------------*/
+
+
+.offers{
+	height: 200px;
 }
