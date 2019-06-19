@@ -5,6 +5,7 @@
 
 .contact-info-container{
 height: 90px;
+display: none;
 }
 /*.contact-container{
 	margin-left: 0;
@@ -29,8 +30,8 @@ height: 90px;
 	background-image: url("../../../UI elements/SVGs/Component 2.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
-	width: 40px;
-	height: 38px;
+	width: 30px;
+	height: 35px;
 	margin-right: 10px;
 	padding: 0;
 	
@@ -91,7 +92,12 @@ height: 90px;
 	font-weight: 400;
 	
 }
-
+.navigation-bar ul{
+	display: none;
+}
+.search-input{
+	right: 0;
+}
 
 
 
@@ -333,6 +339,7 @@ height: 90px;
 .section-2{
 	min-height: 500px;
 	background: url("../../../UI elements/section-2.jpg");
+	background-attachment: fixed;
 	background-repeat: no-repeat;
 	background-size: cover;
 	background-position: 50% 50%;
@@ -520,6 +527,7 @@ height: 90px;
 	background: url("../../../UI elements/section-3.jpg");
 	background-repeat: no-repeat;
 	background-position: 50% 80%;
+	background-attachment: fixed;
 	background-size: cover;
 	color: white;
 	font-family: 'Oswald';
@@ -610,8 +618,116 @@ height: 90px;
 
 /*-------------------------footer---------------------*/
 
-.footer{
+.footer-container{
 	clip-path: polygon(0 0, 100% 12%, 100% 100%, 0% 100%);
-	height: 500px;
+	height: 100%;
 	background: linear-gradient(166.73deg, #00A8B1 21.68%, rgba(0, 177, 158, 0) 208.36%);
+	color: white;
+	position: relative;
+	padding-top: 8%;
+	padding-bottom: 5%;
+
+}
+
+
+.footer-title{
+	font-family: 'Oswald';
+	font-weight: 100;
+	color: white;
+}
+.agency-description{
+	
+	font-family: 'Oxygen';
+	font-weight: 100;
+	font-size: 18px;
+	color: rgba(255,255,255,.6);
+
+}
+
+.phone-info-container .icon{
+	background: url("../../../UI elements/SVGs/white-phone.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 30px;
+	height: 30px;
+}
+.fax-info-container .icon{
+	background: url("../../../UI elements/SVGs/white-fax.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 30px;
+	height: 30px;
+}
+.mail-info-container .icon{
+	background: url("../../../UI elements/SVGs/white-mail.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 30px;
+	height: 30px;
+}
+.adresse-container .icon{
+	background: url("../../../UI elements/SVGs/white-location.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 30px;
+	height: 30px;
+}
+
+.footer-container .info{
+	margin-left: 10px;
+	display: inline;
+	font-family: 'Oxygen';
+	font-size: 18px;
+	color: rgba(255,255,255,.6);
+}
+/*.footer-container .news-letter-container{
+	position: relative;
+}
+.footer-container .news-letter{
+	position: absolute;
+	bottom: 10%;
+}*/
+.footer-container .news-letter .news-letter-description{
+	font-weight: 100;
+}
+
+.news-letter .button-wrapper button{
+	border:solid white 1px;
+	border-radius: 5%;
+	color: white;
+	font-family: 'Oswald';
+	font-size: 22px;
+	font-weight: 100;
+	letter-spacing: 1.5px;
+	padding:5px 20px 5px 20px;
+	background:transparent;
+
+}
+
+
+.social-media-info > div{
+	margin-left: 5%;
+}
+.social-media-info .social-media-icons:nth-child(1){
+	background: url("../../../UI elements/SVGs/white-facebook.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 50px;
+	height: 50px;
+
+}
+.social-media-info .social-media-icons:nth-child(2){
+	background: url("../../../UI elements/SVGs/white-instagram.svg");
+	background-repeat: no-repeat;
+	background-size: 115% 115%;
+	background-position: 50% 50%;
+	width: 50px;
+	height: 50px;
+}
+.social-media-info .social-media-icons:nth-child(3){
+	background: url("../../../UI elements/SVGs/white-twitter.svg");
+	background-repeat: no-repeat;
+	background-size: contain;
+	width: 50px;
+	height: 50px;
 }
