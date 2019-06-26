@@ -20,7 +20,7 @@ class DemandForm(forms.ModelForm):
 class VisaForm(DemandForm):
 	class Meta:
 		model = Visa
-		fields = DemandForm.Meta.fields + ('passport',) 
+		fields =  ('passport','first_name','last_name','phone_number') 
 
 class VisaEtudeForm(VisaForm):
 	class Meta:

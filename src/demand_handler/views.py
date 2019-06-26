@@ -14,8 +14,13 @@ from .forms import (
 def visa_demand(request):
 	form = VisaForm(request.POST or None)
 	if form.is_valid():
+		print(form.cleaned_data)
 		form.save()
+		print("saved successfuly")
 
+	else:
+		print(form)
+		print("fail")
 	context = {
 		"form":form
 	}

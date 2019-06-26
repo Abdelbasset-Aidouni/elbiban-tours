@@ -16,12 +16,12 @@ Including another URLconf
 from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
-from django.urls import path
+from django.urls import path,include
 from .views import index
-from demand_handler.views import create_demand
+
 urlpatterns = [
 	path('', index),
-	path('demand/', create_demand),
+	path('demand/', include('demand_handler.urls')),
     path('admin/', admin.site.urls),
 ]
 
