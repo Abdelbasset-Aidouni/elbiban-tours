@@ -1,50 +1,22 @@
 <div class="offers-section-container container-fluid">
       <h1 class="offers-section-title w-100 text-center text-capitalize">Nos Offres</h1>
       <div class="row">
-        <div class="offer-1 offers col-md-6 col-sm-12 container-fluid">
-          <div class="row justify-content-center">
-            <div class="offer-icon">
-              
-            </div>
-            <h1 class="offer-title w-100 text-capitalize text-center">Contrat De Travail</h1>
-            <div class="offer-desc col-md-10 text-center">
-              At our travel agency, you can book air tickets to any world destination. We also provide online ticket booking via our website.
-            </div>
-          </div>
-        </div>
-        <div class="offer-2 offers col-md-6 col-sm-12">
-          <div class="row justify-content-center">
-            <div class="offer-icon">
-              
-            </div>
-            <h1 class="offer-title w-100 text-center text-capitalize">Credit Card</h1>
-            <div class="offer-desc col-md-10 text-center">
-              At our travel agency, you can book air tickets to any world destination. We also provide online ticket booking via our website.
+        {% for service in services %}
+           <div class="offer-1 offers col-md-6 col-sm-12 container-fluid">
+            <div class="row justify-content-center">
+              <div class="offer-icon" style="background-image:url({{service.svg.url}});">
+                
+              </div>
+              <h1 class="offer-title w-100 text-capitalize text-center">{{service.designation}}</h1>
+              <div class="offer-desc col-md-10 text-center">
+                {{service.description}}
+              </div>
             </div>
           </div>
-        </div>
-        <div class="offer-3 offers col-md-6 col-sm-12 ">
-          <div class="row justify-content-center">
-            <div class="offer-icon">
-              
-            </div>
-            <h1 class="offer-title w-100 text-center text-capitalize">Réservation Hotel</h1>
-            <div class="offer-desc col-md-10 text-center">
-              At our travel agency, you can book air tickets to any world destination. We also provide online ticket booking via our website.
-            </div>
-          </div>
-        </div>
-        <div class="offer-4 offers col-md-6 col-sm-12 ">
-          <div class="row justify-content-center">
-            <div class="offer-icon">
-              
-            </div>
-            <h1 class="offer-title w-100 text-center text-capitalize">Hébergement Canada</h1>
-            <div class="offer-desc col-md-10 text-center">
-              At our travel agency, you can book air tickets to any world destination. We also provide online ticket booking via our website.
-            </div>
-          </div>
-        </div>
+        {% endfor %}
+       
+        
+        
       </div>
       
     </div>

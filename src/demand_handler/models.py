@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth import get_user_model
 from elbiban_tours.utilities import upload_image_path
-from administration.models import Voyage,visaReservation,VisaEtudeReservation
+from administration.models import Voyage,ReservationVisa,VisaEtudeReservation
 User = get_user_model()
 
 class Demand(models.Model):
@@ -14,11 +14,11 @@ class Demand(models.Model):
 
 
 class Visa(Demand):
-	designated_visa = models.ForeignKey(VisaReservation,on_delete=models.SET_NULL,null=True)
+	designated_visa = models.ForeignKey(ReservationVisa,on_delete=models.SET_NULL,null=True)
 	passport 		= models.ImageField(upload_to=upload_image_path,blank=True,null=True)
 
 class VisaEtude(Visa):
-	designated_visa = models.ForeignKey(VisaEtudeReservation,on_delete=models.SET_NULL,null=True)
+	
 	country 		= models.CharField(max_length=50,default="spain")
 
 class Hebergement(Demand):

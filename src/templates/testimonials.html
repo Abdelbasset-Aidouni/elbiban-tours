@@ -1,62 +1,33 @@
 <div class="testimonials-container container-fluid">
       <h1 class="testimonials-title text-center">Témoignages</h1>
       <div class="row justify-content-around">
-        <div class="testimonials testimonial-1 container col-md-3 col-sm-10">
-          <div class="row justify-content-between">
-            <div class="testimonial-img col-md-3 col-2 offset-1">
-              
-            </div>
-            <div class="personal-info container col-8">
-              <div class="row h-100 align-content-center">
-                <h3 class="person-name text-capitalize w-100">Michal A.Young</h3>
-                <p class="person-badge">client fidèle</p>
 
+
+        {% for feedback in feedbacks %}
+
+
+          <div class="testimonials testimonial-1 container col-md-3 col-sm-10">
+            <div class="row justify-content-between">
+              <div class="testimonial-img col-md-3 col-2 offset-1" style="background:url({{feedback.image.url}}) no-repeat 50% 50%;background-size:cover;">
+                
+              </div>
+              <div class="personal-info container col-8">
+                <div class="row h-100 align-content-center">
+                  <h3 class="person-name text-capitalize w-100">{{feedback.username}}</h3>
+                  <p class="person-badge">{{feedback.client_badge}}</p>
+
+                </div>
+              </div>
+            </div>
+            <div class="testimonials-content-container row justify-content-center" style="background-image:url('/media/UI elements/SVGs/left-quote.svg'),url('/media/UI elements/SVGs/right-quote.svg')">
+              <div class="testimonial-content">
+                {{feedback.feedback}}
               </div>
             </div>
           </div>
-          <div class="testimonials-content-container row justify-content-center">
-            <div class="testimonial-content">
-              Tranchees deroulent metairies ameliorer se va je miserable. Car son eclatantes patiemment enveloppes ils atteignait jet.
-            </div>
-          </div>
-        </div>
-        <div class="testimonials testimonial-2 container col-md-3 col-sm-10">
-          <div class="row justify-content-between">
-            <div class="testimonial-img col-md-3 col-2 offset-1">
-              
-            </div>
-            <div class="personal-info container col-8">
-              <div class="row h-100 align-content-center">
-                <h3 class="person-name text-capitalize w-100">Daniel C. Wilkerson</h3>
-                <p class="person-badge">client fidèle</p>
 
-              </div>
-            </div>
-          </div>
-          <div class="testimonials-content-container row justify-content-center">
-            <div class="testimonial-content">
-              Tranchees deroulent metairies ameliorer se va je miserable. Car son eclatantes patiemment enveloppes ils atteignait jet.
-            </div>
-          </div>
-        </div>
-        <div class="testimonials testimonial-3 container col-md-3 col-sm-10">
-          <div class="row justify-content-between">
-            <div class="testimonial-img col-md-3 col-2 offset-1">
-              
-            </div>
-            <div class="personal-info container col-8">
-              <div class="row h-100 align-content-center">
-                <h3 class="person-name text-capitalize w-100">Nancy D. Caldwell</h3>
-                <p class="person-badge">client fidèle</p>
 
-              </div>
-            </div>
-          </div>
-          <div class="testimonials-content-container row justify-content-center">
-            <div class="testimonial-content">
-              Tranchees deroulent metairies ameliorer se va je miserable. Car son eclatantes patiemment enveloppes ils atteignait jet.
-            </div>
-          </div>
-        </div>
+        {% endfor %}
+
       </div>
     </div>

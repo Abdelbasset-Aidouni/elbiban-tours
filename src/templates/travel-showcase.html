@@ -1,88 +1,43 @@
 <div class="travel-showcase container-fluid mt-5 px-5">
       <h1 class="travel-showcase-title text-center my-5 py-5">Les Meilleurs Tours</h1>
       <div class="row justify-content-around mb-5">
+
+        {% for voyage in voyages_1 %}
+
+          <div  class="tours col-md-2 col-sm-10 col-10" style="background-image:url({{voyage.image.url}})">
+            <div class="info-container">
+              <div class="travel-info-container px-2">
+                <span class="city-name">{{voyage.destination}}</span>
+                <span class="price">{{voyage.price}}DA</span>
+              </div>
+            </div>
+            <button>
+              Reserver Maintenat
+            </button>
+          </div>
+
+        {% endfor %}
+        </div>
         
-        <div id="tour-1" class="tours col-md-2 col-sm-10 col-10">
-          <div class="info-container">
-            <div class="travel-info-container px-2">
-              <span class="city-name">Italy</span>
-              <span class="price">45000,<small>00</small>DA</span>
-            </div>
-          </div>
-        </div>
-        <div id="tour-2" class="tours col-md-2 col-sm-10 col-10">
-          <div class="info-container">
-            <div class="travel-info-container px-2">
-              <span class="city-name">Luxemborg</span>
-              <span class="price">50000,<small>00</small>DA</span>
-            </div>
-          </div>
-        </div>
-        <div id="tour-3" class="tours col-md-2 col-sm-10 col-10">
-          <div class="info-container">
-            <div class="travel-info-container px-2">
-              <span class="city-name">Malta</span>
-              <span class="price">18000,<small>00</small>DA</span>
-            </div>
-          </div>
-        </div>
-        <div id="tour-4" class="tours col-md-2 col-sm-10 col-10">
-          <div class="info-container">
-            <div class="travel-info-container px-2">
-              <span class="city-name">Yamen</span>
-              <span class="price">54000,<small>00</small>DA</span>
-            </div>
-          </div>
-        </div>
-      </div>
       <div class="row justify-content-around">
-        <div id="tour-5" class="tours col-md-2 col-sm-10 col-10">
-          <div class="info-container">
-            <div class="travel-info-container px-2">
-              <span class="city-name">Thailand</span>
-              <span class="price">57000,<small>00</small>DA</span>
+        
+          {% for voyage in voyages_2 %}
+            <div  class="tours col-md-2 col-sm-10 col-10" style="background-image:url({{voyage.image.url}})">
+            <div class="info-container">
+              <div class="travel-info-container px-2">
+                <span class="city-name">{{voyage.destination}}</span>
+                <span class="price">{{voyage.price}}DA</span>
+              </div>
             </div>
+            <button>
+              Reserver Maintenat
+            </button>
           </div>
-        </div>
-        <div id="tour-6" class="tours col-md-2 col-sm-10 col-10">
-          <div class="info-container">
-            <div class="travel-info-container px-2">
-              <span class="city-name">Athina</span>
-              <span class="price">39000,<small>00</small>DA</span>
-            </div>
-          </div>
-        </div>
-        <div id="tour-7" class="tours col-md-2 col-sm-10 col-10">
-          <div class="info-container">
-            <div class="travel-info-container px-2">
-              <span class="city-name">Hawaii</span>
-              <span class="price">67000<small>,00</small>DA</span>
-            </div>
-          </div>
-        </div>
-        <div id="tour-8" class="tours col-md-2 col-sm-10 col-10">
-          <div class="info-container">
-            <div class="travel-info-container px-2">
-              <span class="city-name">Egypt</span>
-              <span class="price">32000<small>,00</small>DA</span>
-            </div>
-          </div>
-        </div>
+            
+
+          {% endfor %}
+
       </div>
       
     </div>
-    <div class="section-2 container-fluid">
-      <div class="row w-100  justify-content-center section-2-content">
-        <h1 class="section-2-title w-100 text-center">Décovrir Nos Opportunités</h1>
-        <div class="description col-md-4 col-sm-12 text-center">
-          visa d’étude, immigration canada,contact de travail et plus
-        </div>
-        <div class="button-wrapper container-fluid">
-          <div class="row w-100 justify-content-center">
-            <button class="col-md-3 col-sm-10">
-              voir plus
-            </button>
-          </div>
-        </div>
-      </div>
-    </div>
+    

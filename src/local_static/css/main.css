@@ -67,6 +67,15 @@ display: none;
 	border-radius: 5px;
 	padding: 5px 10px 5px 10px;
 	background: transparent;
+	-webkit-transition: all 0.8s; 
+  	transition: all 0.8s; 
+}
+.contact-info .button-wrapper button:hover{
+	
+	color: white;
+	background: #FF761B;
+	-webkit-transition: all 0.8s; 
+  	transition: all 0.8s; 
 }
 
 
@@ -149,6 +158,15 @@ display: none;
 	font-family: 'Oswald';
 	font-weight: 100;
 	letter-spacing: 3px;
+	-webkit-transition: all 0.8s; 
+  	transition: all 0.8s;
+}
+.landing-button button:hover{
+	
+	color: black;
+	background: white;
+	-webkit-transition: all 0.8s; 
+  	transition: all 0.8s; 
 }
 
 
@@ -289,14 +307,63 @@ display: none;
 	background-size:100% 100%;
 }
 .tours{
+	z-index: 1;
+	width: 100%;
+	height: 100%;
+	position: relative;
 	flex-basis: 20%;
 	max-width: 20%;
-	position: relative;
 	border-radius: 20px;
 	height: 180px;
+	padding: 0;
 	background-repeat: no-repeat;
 	background-size:100% 100%;
+	-webkit-transition: all 0.8s; 
+  	transition: all 0.8s; 
 }
+.tours button{
+	z-index: 1000;
+	position: absolute;
+	font-family: 'Oswald';
+	top: 50%;
+  	left: 50%;
+  	width: 60%;
+  	background-color: transparent;
+	padding: 5px 5px 5px 5px;
+	border:solid black .4px;
+	border-radius: 5px;
+	font-size: 17px;
+	font-weight: 100;
+	display: none;
+	transform: translate(-50%, -50%);
+  	-ms-transform: translate(-50%, -50%);
+  	-webkit-transition: all 0.8s; 
+  	transition: all 0.8s; 
+}
+.tours button:hover{
+	background-color: black;
+	color: white;
+	-webkit-transition: all 0.8s; 
+  	transition: all 0.8s; 
+}
+.tours:hover{
+
+	opacity: 0.5;
+	-webkit-transition: all 0.8s; 
+  	transition: all 0.8s; 
+}
+.tours:hover button{
+	
+	display: block;
+	-webkit-transition: all 0.8s; 
+  	transition: all 0.8s; 
+}
+
+
+.tour-container{
+	position: relative;
+}
+
 
 .tours .info-container{
 	position: absolute;
@@ -382,6 +449,15 @@ display: none;
 	font-weight: 100;
 	letter-spacing: 3px;
 	color: white;
+	-webkit-transition: all 0.8s; 
+  	transition: all 0.8s; 
+}
+.section-2 .button-wrapper button:hover{
+	
+	color: black;
+	background: white;
+	-webkit-transition: all 0.8s; 
+  	transition: all 0.8s; 
 }
 
 
@@ -405,29 +481,20 @@ display: none;
 	letter-spacing: 2px;
 
 }
-.offer-1 .offer-icon{
-	background: url("../../../UI elements/SVGs/contrat-travail.svg");
-	background-size: contain;
-}
-.offer-2 .offer-icon{
-	background: url("../../../UI elements/SVGs/credit-card.svg");
-	background-size: contain;
-}
-.offer-3 .offer-icon{
-	background: url("../../../UI elements/SVGs/hotel.svg");
-	background-size: 150% 150%;
-	background-position: 50% 50%;
-}
-.offer-4 .offer-icon{
-	background: url("../../../UI elements/SVGs/hebergement.svg");
-	background-size: contain;
-}
-.offers .offer-icon{
+
+
+
+.offers-section-container .offers .offer-icon{
 	background-repeat: no-repeat;
-	
+	background-size: contain;
 	width: 60px;
 	height: 60px;
 	margin:5% 0 2% 0;
+}
+.offer-icon:nth-child(3){
+	
+	background-size: 150% 150%;
+	background-position: 50% 50%;
 }
 .offers .offer-desc{
 	font-family: 'Oxygen';
@@ -467,24 +534,7 @@ display: none;
 	height: 80px;
 	border-radius: 50%;
 }
-.testimonial-1 .testimonial-img{
-	background: url("../../../UI elements/img 1.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: 50% 50%;
-}
-.testimonial-2 .testimonial-img{
-	background: url("../../../UI elements/img 2.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: 50% 50%;
-}
-.testimonial-3 .testimonial-img{
-	background: url("../../../UI elements/img 3.jpg");
-	background-repeat: no-repeat;
-	background-size: cover;
-	background-position: 50% 50%;
-}
+
 
 .testimonials .personal-info{
 	flex-basis: 60%;
@@ -501,7 +551,7 @@ display: none;
 .testimonials-content-container{
 	width: 100%;
 
-	background: url("../../../UI elements/SVGs/left-quote.svg"), url("../../../UI elements/SVGs/right-quote.svg");
+	
 	background-repeat: no-repeat,no-repeat;
 	background-position: -10% -5%,105% 110%;
 	background-size: 30% 30%,30% 30%; 
@@ -524,7 +574,7 @@ display: none;
 .section-3-container{
 	position: relative;
 	min-height: 250px;
-	background: url("../../../UI elements/section-3.jpg");
+	background-image: url("/media/UI elements/section-3.jpg");
 	background-repeat: no-repeat;
 	background-position: 50% 80%;
 	background-attachment: fixed;
@@ -558,9 +608,15 @@ display: none;
 	font-weight:100;
 	color: white;
 	padding: 5px 15px 5px 15px;
-
-
-
+	-webkit-transition: all 0.8s; 
+  	transition: all 0.8s;
+}
+.section-3-button:hover{
+	
+	color: black;
+	background: white;
+	-webkit-transition: all 0.8s; 
+  	transition: all 0.8s; 
 }
 
 
@@ -613,6 +669,15 @@ display: none;
 	font-family: 'Oswald';
 	font-weight: 100;
 	color: #00A8B1;
+	-webkit-transition: all 0.8s; 
+  	transition: all 0.8s;
+}
+.contact-form-submit-button:hover{
+	
+	color: white;
+	background: #00A8B1;
+	-webkit-transition: all 0.8s; 
+  	transition: all 0.8s; 
 }
 
 

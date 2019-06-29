@@ -27,17 +27,17 @@
     {% include "header.html" %}
     {% include "nav-bar.html" %}
     {% include "landing.html" %}
-    {% include "section-1.html" %}
-    {% include "travel-showcase.html" %}
-    {% include "offers-section.html" %}
+    {% include "section-1.html" with services=services_1 %}
+    {% include "travel-showcase.html" with voyages_1=voyages_1 voyages_2=voyages_2 %}
     {% include "section-2.html" %}
-    {% include "testimonials.html" %}
+    {% include "offers-section.html" with services=services_2 %}
+    {% include "testimonials.html" with feedbacks=feedbacks %}
     {% include "section-3.html" %}
     {% include "contact-form.html" %}
     {% include "footer.html" %}
     
 
-    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
   </body>
 </html>
 
