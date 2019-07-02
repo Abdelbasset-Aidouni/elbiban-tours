@@ -42,7 +42,7 @@ class ImmigrationForm(DemandForm):
 class PlaneTicketForm(DemandForm):
 	class Meta:
 		model = PlaneTicket
-		fields = DemandForm.Meta.fields + ('destination',) 
+		fields = DemandForm.Meta.fields
 
 
 class ContratDeTravailForm(DemandForm):

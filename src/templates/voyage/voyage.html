@@ -1,0 +1,86 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block head %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/voyage.css' %}">
+{% endblock head %}
+{% block content %}
+   <div class="voyages-upper-container">
+        <h3 class="w-100 text-capitalize text-center my-3 voyage-container-title">Voyages</h3>
+        <hr class="w-75 text-center">
+        {% if  not voyages %}
+                <div class="voyages-container container">
+                    <div class="row flex-wrap justify-content-center align-content-center" >
+                      
+                        
+                        <h4 class="not-found-msg">   
+                            il n'y a pas de voyages dans le moment
+                        </h4>
+                        
+                        
+                    </div>
+                    
+                    
+                </div>
+        
+        {% else %}
+        <div class="voyages-container container">
+            <div class="row flex-wrap justify-content-between">
+                {% for voyage in voyages %}
+                  
+                    <div  class="voyage-container col-12 col-md-3">
+                        <div class="voyage-image" style="background-image:url({{voyage.image.url}})">
+                            <button>
+                                Reserver Maintenant
+                            </button>
+                        </div>
+                        <div class="voyage-info-container container-fluid pt-3 pb-1">
+                            <div class="row justify-content-end pb-3 pr-2">
+                                {% if voyage.availability == 'Disponible' %}
+                                    <span class="badge badge-success">{{voyage.availability}}</span>
+                                {% else %}
+                                    <span class="badge badge-danger">{{voyage.availability}}</span>
+                                {% endif %}
+                                
+                            </div>
+                            <div class="row justify-content-between mx-2 ">
+                                <span>{{voyage.destination}}</span><span>{{voyage.price}}DA</span>
+                            </div>
+                            
+                        </div>
+                    </div>
+
+                {% endfor %}
+                
+                
+                
+                
+                
+            </div>
+            
+            
+        </div>
+        {% endif %}
+    </div> 
+{% endblock content %}
+{% block script %}
+<script>
+    
+
+    $(document).ready(function(){
+
+      function getHeight(){
+            return $(window).height();
+        }
+        console.log($(".not-found-msg").parent());
+        
+        document.getElementsByClassName("not-found-msg")[0].parent().style.height = getHeight() * 0.7;
+        console.log(document.getElementsByClassName("not-found-msg")[0].parent());
+        
+
+    });
+</script>
+     
+{% endblock script %}
+
+

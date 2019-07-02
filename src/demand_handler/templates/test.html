@@ -10,3 +10,24 @@
 		submit
 	</button>
 </form>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script>
+	
+
+$('button').click(function(event) {
+	event.preventDefault();
+	let formData = $("form").serialize();
+	$.ajax({
+	url:"/demand/plane-ticket/2/",
+	type: "post",
+	data: formData,
+	success: function(data) {
+		console.log("seccess ya lbakbak");
+	},
+	error: function() {
+		console.log("tnaket ya lbakbak");
+	}
+	});
+});
+</script>

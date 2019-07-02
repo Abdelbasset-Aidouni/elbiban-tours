@@ -1,3 +1,4 @@
+{% load l10n %}
 <div class="travel-showcase container-fluid mt-5 px-5">
       <h1 class="travel-showcase-title text-center my-5 py-5">Les Meilleurs Tours</h1>
       <div class="row justify-content-around mb-5">
@@ -8,7 +9,9 @@
             <div class="info-container">
               <div class="travel-info-container px-2">
                 <span class="city-name">{{voyage.destination}}</span>
-                <span class="price">{{voyage.price}}DA</span>
+                <span class="price">{% localize on %}
+    {{voyage.price}}
+{% endlocalize %}DA</span>
               </div>
             </div>
             <button>

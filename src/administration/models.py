@@ -52,11 +52,18 @@ class FeedBack(models.Model):
 
 
 class Voyage(models.Model):
+	AVAILABLE	= 'Disponible'
+	NOT_AVAILABLE 	= 'indisponible'
+	AVAILABILITY 	= {
+	(AVAILABLE,'disponible'),
+	(NOT_AVAILABLE,'indisponible')
+	}
 	image		= models.ImageField(upload_to=upload_image_path)
 	destination	= models.CharField(max_length=50)
-	price		= models.DecimalField(max_digits=20,decimal_places=2)
-	description	= models.TextField(blank=True,null=True)
+	price		= models.DecimalField(max_digits=20,decimal_places=0)
+	availability= models.CharField(max_length=20,choices=AVAILABILITY,default=AVAILABLE)
 	timestamp	= models.DateField(auto_now_add=False)
+	best		= models.BooleanField(default=False)
 
 	def __str__(self):
 		return self.destination

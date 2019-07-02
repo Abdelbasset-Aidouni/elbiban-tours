@@ -29,3 +29,11 @@ def index(request):
 
 	}
 	return render(request,"base.html",context)
+
+
+def voyage_page(request):
+	voyages 		= Voyage.objects.all()
+	context 		= {
+		'voyages':voyages,
+	}
+	return render(request,'voyage/voyage.html',context)

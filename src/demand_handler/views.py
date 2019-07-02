@@ -1,4 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render,get_object_or_404
+from .models import PlaneTicket
+from administration.models import Voyage
 from .forms import (
 				VisaForm, 
 				VisaEtudeForm,
@@ -11,7 +13,7 @@ from .forms import (
 
 
 
-def visa_demand(request):
+def visa_demand(request,pk=None):
 	form = VisaForm(request.POST or None)
 	if form.is_valid():
 		print(form.cleaned_data)
@@ -65,10 +67,20 @@ def immigration_demand(request):
 
 
 
-def plane_ticket_demand(request):
+
+
+def plane_ticket_demand(request,pk=None):
 	form = PlaneTicketForm(request.POST or None)
+
 	if form.is_valid():
-		form.save()
+		form_data = form.cleaned_data
+		obj = PlaneTicket(
+				first_name=form_data.get("first_name"),
+				last_name=form_data.get("last_name"),
+				phone_number=form_data.get("phone_number"),
+				destination=get_object_or_404(Voyage,pk=pk)
+			)
+		obj.save()
 	
 	context = {
 		"form":form

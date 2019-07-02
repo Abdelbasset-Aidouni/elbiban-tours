@@ -14,7 +14,9 @@
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-
+    {% block head %}
+        
+    {% endblock head %}
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Abel|Oswald:200,300,400|Oxygen:300,400,700&display=swap" rel="stylesheet">
@@ -24,20 +26,40 @@
     <title>El Biban Tours</title>
   </head>
   <body>
-    {% include "header.html" %}
-    {% include "nav-bar.html" %}
-    {% include "landing.html" %}
-    {% include "section-1.html" with services=services_1 %}
-    {% include "travel-showcase.html" with voyages_1=voyages_1 voyages_2=voyages_2 %}
-    {% include "section-2.html" %}
-    {% include "offers-section.html" with services=services_2 %}
-    {% include "testimonials.html" with feedbacks=feedbacks %}
-    {% include "section-3.html" %}
-    {% include "contact-form.html" %}
-    {% include "footer.html" %}
+
+    {% block header %}
+        {% include "header.html" %}
+        {% include "nav-bar.html" %}
+    {% endblock header %}
+
+    {% block content %}
+        {% include "landing.html" %}
+        {% include "section-1.html" with services=services_1 %}
+        {% include "travel-showcase.html" with voyages_1=voyages_1 voyages_2=voyages_2 %}
+        {% include "section-2.html" %}
+        {% include "offers-section.html" with services=services_2 %}
+        {% include "testimonials.html" with feedbacks=feedbacks %}
+        {% include "section-3.html" %}
+        {% include "contact-form.html" %}
+        {% include "footer.html" %}
+    {% endblock content %}
+    
+    
     
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script>
+        $(function () {
+          $(document).scroll(function () {
+            var $nav = $(".navigation-bar");
+            
+            $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
+          });
+        });
+    </script>
+    {% block script %}
+        
+    {% endblock script %}
   </body>
 </html>
 
