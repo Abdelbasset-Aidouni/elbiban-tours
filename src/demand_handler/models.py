@@ -9,7 +9,7 @@ class Demand(models.Model):
 	slug 			= models.SlugField(max_length=50,blank=True)
 	first_name 		= models.CharField(max_length=50,blank=True,default="khra")
 	last_name 		= models.CharField(max_length=50)
-	phone_number 	= models.CharField(max_length=50,blank=True)
+	phone_number 	= models.DecimalField(max_digits=10,decimal_places=0)
 	timestamp		= models.DateField(auto_now_add=True)
 
 	def __str__(self):

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from django.contrib.auth import authenticate, login,get_user_model
 from administration.models import Service,FeedBack,Voyage
 from administration.forms import MessageForm
+from demand_handler.forms import PlaneTicketForm
 User = get_user_model()
 def index(request):
 	msg_form		= MessageForm(request.POST or None)
@@ -32,8 +33,10 @@ def index(request):
 
 
 def voyage_page(request):
+	form 			= PlaneTicketForm(request.POST or None)
 	voyages 		= Voyage.objects.all()
 	context 		= {
 		'voyages':voyages,
+		'form':form,
 	}
 	return render(request,'voyage/voyage.html',context)

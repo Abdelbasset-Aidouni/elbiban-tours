@@ -8,12 +8,16 @@
 
 
     <!-- Favicon -->
-    <link rel="icon" href="../../../UI elements/favicon.ico" type="image/x-icon" />
-    <link rel="shortcut icon" href="../../../UI elements/favicon.ico" type="image/x-icon" />
+    <link rel="icon" href="/media/UI elements/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/media/UI elements/favicon.ico" type="image/x-icon" />
+    
     
 
+    
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
     {% block head %}
         
     {% endblock head %}
@@ -22,6 +26,7 @@
     <link href="https://fonts.googleapis.com/css?family=Abel|Oswald:200,300,400|Oxygen:300,400,700&display=swap" rel="stylesheet">
     <!-- Cosumized CSS -->
     <link rel="stylesheet" type="text/css" href={% static "css/main.css" %}>
+    <link rel="stylesheet" type="text/css" href={% static "css/modal.css" %}>
 
     <title>El Biban Tours</title>
   </head>
@@ -29,6 +34,7 @@
 
     {% block header %}
         {% include "header.html" %}
+        
         {% include "nav-bar.html" %}
     {% endblock header %}
 
@@ -48,6 +54,12 @@
     
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script type="text/javascript" src={% static "js/modal_popup.js" %}></script>
+    
+    
+
+    
     <script>
         $(function () {
           $(document).scroll(function () {
@@ -56,7 +68,11 @@
             $nav.toggleClass('scrolled', $(this).scrollTop() > $nav.height());
           });
         });
+
+        
+        
     </script>
+
     {% block script %}
         
     {% endblock script %}

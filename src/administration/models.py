@@ -1,6 +1,7 @@
 from django.db import models
 from elbiban_tours.utilities import upload_image_path
 from django.contrib.auth import get_user_model
+from django.urls import reverse
 
 User = get_user_model()
 
@@ -29,6 +30,7 @@ class GeneralInfo(models.Model):
 class Service(models.Model):
 	designation		= models.CharField(max_length=50)
 	description		= models.TextField()
+	is_in_landing	= models.BooleanField(default=False)
 	svg				= models.FileField(upload_to=upload_image_path,null=True)
 
 	def __str__(self):
@@ -67,6 +69,9 @@ class Voyage(models.Model):
 
 	def __str__(self):
 		return self.destination
+
+	def get_end_point(self):
+		return reverse("plane_ticket_demand",kwargs={"pk":self.pk})
 
 class ReservationVisa(models.Model):
 	destination		= models.CharField(max_length=50)

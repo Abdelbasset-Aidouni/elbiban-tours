@@ -1,5 +1,7 @@
 from django.shortcuts import render,get_object_or_404
+from django.http import JsonResponse
 from .models import PlaneTicket
+from time import sleep
 from administration.models import Voyage
 from .forms import (
 				VisaForm, 
@@ -73,6 +75,7 @@ def plane_ticket_demand(request,pk=None):
 	form = PlaneTicketForm(request.POST or None)
 
 	if form.is_valid():
+		
 		form_data = form.cleaned_data
 		obj = PlaneTicket(
 				first_name=form_data.get("first_name"),
@@ -81,6 +84,9 @@ def plane_ticket_demand(request,pk=None):
 				destination=get_object_or_404(Voyage,pk=pk)
 			)
 		obj.save()
+		return JsonResponse({},status=200)
+	else:
+		return JsonResponse({},status=400)
 	
 	context = {
 		"form":form

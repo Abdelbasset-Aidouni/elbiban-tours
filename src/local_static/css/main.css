@@ -27,7 +27,7 @@ display: none;
 }
 
 .icon-1{
-	background-image: url("../../../UI elements/SVGs/Component 2.svg");
+	background-image: url("/media/UI elements/SVGs/Component 2.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	width: 30px;
@@ -37,7 +37,7 @@ display: none;
 	
 }
 .icon-2{
-	background-image: url("../../../UI elements/SVGs/Component.svg");
+	background-image: url("/media/UI elements/SVGs/Component.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	width: 40px;
@@ -81,9 +81,17 @@ display: none;
 
 /*-------------------------NavBar----------------------------*/
 
-.navigation-bar{
-	height: 70px;
+.navigation-bar.scrolled {
+  background-color: #fff !important;
+  transition: background-color 200ms linear;
+  
+}
 
+.navigation-bar{
+	z-index:1 ;
+	height: 70px;
+	position: sticky;
+	top: 0%;
 	background: rgba(158, 158, 158, .12);
 	
 }
@@ -710,28 +718,28 @@ display: none;
 }
 
 .phone-info-container .icon{
-	background: url("../../../UI elements/SVGs/white-phone.svg");
+	background: url("/media/UI elements/SVGs/white-phone.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	width: 30px;
 	height: 30px;
 }
 .fax-info-container .icon{
-	background: url("../../../UI elements/SVGs/white-fax.svg");
+	background: url("/media/UI elements/SVGs/white-fax.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	width: 30px;
 	height: 30px;
 }
 .mail-info-container .icon{
-	background: url("../../../UI elements/SVGs/white-mail.svg");
+	background: url("/media/UI elements/SVGs/white-mail.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	width: 30px;
 	height: 30px;
 }
 .adresse-container .icon{
-	background: url("../../../UI elements/SVGs/white-location.svg");
+	background: url("/media/UI elements/SVGs/white-location.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	width: 30px;
@@ -774,7 +782,7 @@ display: none;
 	margin-left: 5%;
 }
 .social-media-info .social-media-icons:nth-child(1){
-	background: url("../../../UI elements/SVGs/white-facebook.svg");
+	background: url("/media/UI elements/SVGs/white-facebook.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	width: 50px;
@@ -782,7 +790,7 @@ display: none;
 
 }
 .social-media-info .social-media-icons:nth-child(2){
-	background: url("../../../UI elements/SVGs/white-instagram.svg");
+	background: url("/media/UI elements/SVGs/white-instagram.svg");
 	background-repeat: no-repeat;
 	background-size: 115% 115%;
 	background-position: 50% 50%;
@@ -790,7 +798,7 @@ display: none;
 	height: 50px;
 }
 .social-media-info .social-media-icons:nth-child(3){
-	background: url("../../../UI elements/SVGs/white-twitter.svg");
+	background: url("/media/UI elements/SVGs/white-twitter.svg");
 	background-repeat: no-repeat;
 	background-size: contain;
 	width: 50px;

@@ -3,6 +3,7 @@
 {% load static %}
 {% block head %}
     <link rel="stylesheet" type="text/css" href="{% static 'css/voyage.css' %}">
+    
 {% endblock head %}
 {% block content %}
    <div class="voyages-upper-container">
@@ -30,7 +31,7 @@
                   
                     <div  class="voyage-container col-12 col-md-3">
                         <div class="voyage-image" style="background-image:url({{voyage.image.url}})">
-                            <button>
+                            <button class="modal-trigger" modal="modal-1" endpoint={{voyage.get_end_point}}>
                                 Reserver Maintenant
                             </button>
                         </div>
@@ -62,7 +63,29 @@
         </div>
         {% endif %}
     </div> 
+
+    {% include "snippests/modal.html" with modal_id="modal-1" form_title="Remplissez le formulaire SVP" form=form %}
+    {% include "snippests/confirmation_modal.html" %}
 {% endblock content %}
+{% include "footer.html" %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 {% block script %}
 <script>
     
@@ -80,6 +103,8 @@
 
     });
 </script>
+
+
      
 {% endblock script %}
 
