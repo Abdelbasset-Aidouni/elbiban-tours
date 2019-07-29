@@ -1,60 +1,91 @@
       
 
 
+  
+  var costumModals  = $(".costum-modal");
+  var chooseFileButton  = '<div><button class="btn btn-info d-inline" role="file-upload">coisir un fichier</button><input role="filename-display" type="text" class="form-control-plaintext d-inline px-2 w-50" readonly value="aucun fichier choisi"></div>';
+  $.each(costumModals,(key,value) => {
+          $(value).find("input").not("input[type=file]").addClass("form-control");
+          $(value).find("input[type=file]").addClass("d-none");
+          $(value).find("input[type=file]").after(chooseFileButton);
+    });
 
+  $(".costum-modal").find("button[role=file-upload]").click(function (event) {
+    let inputFile = $(this).parent().parent().find("input[type=file]");
+    
+    inputFile.click();
+    console.log("raha tmchii");
+    
+  });
+  $(".costum-modal").find("input[type=file]").on("change",function (event) {
+    $(this).parent().find("input[role='filename-display']").val($(this).val().substr($(this).val().lastIndexOf("\\")+1));
+  })
 
-  $(".costum-modal").find("input").addClass("form-control");
+  
+  
       
       $(".costum-modal").find("button[type=submit]").click(function (event) {
         event.preventDefault();
         let modalLink    = String(this.getAttribute("modal"));
         let modalElement = $("#" + String(this.getAttribute("modal")));
-        console.log(String(this.getAttribute("modal")));
-        modalElement.css({"opacity":"0.8"});
+        let inputSet    = modalElement.find("input");
+        let fields      = {};
+
+        $.each(inputSet,(key,value) => {
+          fields[String($(value).attr("name"))] = $(value).val();
+        });
+        let form_is_valide = validateFields(fields);
+        if ( form_is_valide != true) {
+          setErrMessage(form_is_valide);
+          openModal("confirmation-modal",null,"req-failed",true);
+        }else{
+
         let spinner     = modalElement.parent().find(".costum-modal-spinner-container");
-        console.log(spinner);
-        spinner.show();
-        
         var protocol    = location.protocol;
         var slashes     = protocol.concat("//");
         var host        = slashes.concat(window.location.hostname);
-        host            += ":" + window.location.port;
         let endPoint    = this.getAttribute("endpoint");
         let formData    = $(this.parentElement.parentElement.parentElement).serialize();
+        host            += ":" + window.location.port;
+        modalElement.css({"opacity":"0.8"});
+        spinner.show();
+        
+        
         $.ajax(
           {
             url: host + endPoint, 
             method:"POST",
             data:formData,
             success: function(resulte){
-            console.log("mriiigla belmsak",resulte);
-            
-            $("#confirmation-modal").find(".costum-modal-body").html("Merci pour votre soumission vous sera contacté ultérieurement ");
-            modalElement.css({"opacity":"1"});
-            spinner.hide();
-            closeModal(modalLink);
-            openModal("confirmation-modal",null,"req-success");
-            
-
-            
+                        console.log("mriiigla belmsak",resulte);
+                        modalElement.css({"opacity":"1"});
+                        spinner.hide();
+                        closeModal(modalLink);
+                        setSuccessMsg();
+                        openModal("confirmation-modal",null,"req-success");
             },
             error:function (err) {
-              console.log("the err is ",err);
-              modalElement.css({"opacity":"1"});
-              spinner.hide();
-              closeModal(modalLink);
-              $("#confirmation-modal").find(".costum-modal-body").html("une erreur inattendue s'est produite. veuillez vérifier la conformité de vos informations réessayer ultérieurement");
-              console.log($("#confirmation-modal").find(".costum-modal-body").innerHtml);
-              openModal("confirmation-modal",null,"req-failed");
+                        console.log("the err is ",err);
+                        modalElement.css({"opacity":"1"});
+                        spinner.hide();
+                        closeModal(modalLink);
+                        setErrMessage();
+                        openModal("confirmation-modal",null,"req-failed");
             }
           });
+        }
       });
+
+
+
       function getBodyEvent(event) {
-  
         let modalLink   = $("body").attr('modal');
         let keyCode     = event.keyCode;
         if (keyCode == 27) closeModal(modalLink);
       }
+
+
+
       function getTriggeredElement(element,event){
         let x     = event.target.className;
         if ( x.search("modal-in-the-show")>0 )  
@@ -62,6 +93,9 @@
            closeModal(element.firstElementChild.id); 
           }
       }
+
+
+
 
       $(".modal-trigger").click(function (){
         
@@ -71,17 +105,16 @@
           else openModal(modalLink);
           
       });
+
+
       $(".modal-dismiss").click(function (event){
           event.preventDefault();
           let modalLink = this.getAttribute("modal");
           closeModal(modalLink);
       });
 
-      
-      
 
-
-      function openModal(modalLink,endpoint=null,className=null) {
+      function openModal(modalLink,endpoint=null,className=null,nested=false) {
         let modalElement    = $("#" + String(modalLink));
         let modalContainer  = modalElement.parent();
 
@@ -90,24 +123,62 @@
         if (endpoint) modalElement.find("button[type=submit]").attr("endpoint",endpoint);
         modalElement.fadeIn("slow");
         modalContainer.toggleClass("modal-in-the-show");
-        $("body").attr('onkeydown','getBodyEvent(event);');
+        if (!nested) {
+          $("body").attr('onkeydown','getBodyEvent(event);');
+        }else{
+          modalContainer.css({"z-index":"10000"});
+          modalElement.css({"z-index":"20000"});
+          modalElement.attr("parent-modal",$("body").attr('modal'));
+        }
         $("body").attr('modal',String(modalLink));
+        
       }
 
 
       function closeModal(modalLink) {
         let modalElement    = $("#" + String(modalLink));
         let modalContainer  = modalElement.parent();
+        let parentModal     = modalElement.attr("parent-modal");
+        if (parentModal){
+          $("body").attr('modal',String(parentModal));
+        }else{
+          $("body").removeAttr('onkeydown');
+          $("body").removeAttr('modal');
+        }
         modalElement.fadeOut(300);
-        $("body").removeAttr('onkeydown');
-        $("body").removeAttr('modal');
         modalContainer.fadeOut(250);
           setTimeout(
             function() 
             {
               modalContainer.toggleClass("modal-in-the-show");
-            }, 600);
+            }, 310);
         modalElement.css("display","none");
+      }
+
+
+
+      function phoneNumberValidator(field){
+        if (String(field)[0] != 0) return false;
+        if (typeof parseInt(field) != "number")  return false;
+        console.log("field is a number");
+        if (field.toString().length != 10 ) return false;
+        
+        return true;
+      }
+
+      function validateFields(fields){
+        if (!phoneNumberValidator(fields["phone_number"])) return "svp entrer un numéro de telephone valide";
+        return true;
+      }
+
+      function setErrMessage(msg=null){
+        if (!msg) msg = "une erreur inattendue s'est produite. veuillez vérifier la conformité de vos informations réessayer ultérieurement";
+        $("#confirmation-modal").find(".costum-modal-body").html(msg);
+      }
+
+      function setSuccessMsg(msg=null){
+        if (!msg) msg = "Merci pour votre soumission vous sera contacté ultérieurement ";
+        $("#confirmation-modal").find(".costum-modal-body").html(msg);
       }
 
       

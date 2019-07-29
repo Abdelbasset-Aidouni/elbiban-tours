@@ -134,5 +134,10 @@
   font-weight: 100;
   text-align: center;
 }
+input[type="number"] {
+  -webkit-appearance: textfield;
+     -moz-appearance: textfield;
+          appearance: textfield;
+}
 
       

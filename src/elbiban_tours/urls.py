@@ -17,12 +17,13 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path,include
-from .views import index,voyage_page
+from .views import index,voyage_page,services_page
 
 urlpatterns = [
-	path('', index),
-    path('voyages/',voyage_page),
-	path('demand/', include('demand_handler.urls')),
+	path('', index,name='home'),
+    path('voyages/',voyage_page,name='voyages'),
+	path('demand/', include('demand_handler.urls'),name='demand'),
+    path('services/',services_page,name='services'),
     path('admin/', admin.site.urls),
 ]
 

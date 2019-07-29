@@ -36,6 +36,9 @@ class Service(models.Model):
 	def __str__(self):
 		return self.designation
 
+	def get_end_point(self):
+		return reverse("services")
+
 
 class FeedBack(models.Model):
 	CLIENT_FIDELE = 'client fidèle'

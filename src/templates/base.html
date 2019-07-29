@@ -18,15 +18,16 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-    {% block head %}
-        
-    {% endblock head %}
+    
 
     <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Abel|Oswald:200,300,400|Oxygen:300,400,700&display=swap" rel="stylesheet">
     <!-- Cosumized CSS -->
     <link rel="stylesheet" type="text/css" href={% static "css/main.css" %}>
     <link rel="stylesheet" type="text/css" href={% static "css/modal.css" %}>
+    {% block head %}
+        
+    {% endblock head %}
 
     <title>El Biban Tours</title>
   </head>
@@ -47,8 +48,9 @@
         {% include "testimonials.html" with feedbacks=feedbacks %}
         {% include "section-3.html" %}
         {% include "contact-form.html" %}
-        {% include "footer.html" %}
+        
     {% endblock content %}
+        {% include "footer.html" %}
     
     
     
