@@ -1,10 +1,32 @@
-.header{
-	height: 150px;
 
+
+ a:hover{
+	text-decoration: none;
 }
 
+input{
+	color: #252525;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+      -webkit-appearance: none; 
+      margin: 0; 
+}
+input[type=number] { 
+      -moz-appearance: textfield;
+      appearance: textfield;
+      margin: 0; 
+    }
+
+/*.header{
+	height: 150px;
+
+}*/
+.header  {
+	height: 90px;
+}
 .contact-info-container{
-height: 90px;
+/*height: 90px;*/
 display: none;
 }
 /*.contact-container{
@@ -20,8 +42,8 @@ display: none;
 .logo{
 	background-image: url("./biban tours.png");
 	background-size: contain;
-	width: 180px;
-	height: 90px;
+	/*width: 180px;*/
+	/*height: 90px;*/
 	background-repeat: no-repeat;
 	
 }
@@ -55,22 +77,25 @@ display: none;
 	line-height: 1;
 	margin:2px;
 	padding: 0;
+	color: rgba(78, 78, 80, 0.62);
 
 }
 .info-2 p{
 	margin: 0;
 	line-height: 2;
 }
-.contact-info .button-wrapper button{
+
+.contact-info .button-wrapper a , .mobile-button a{
 	border: solid #FF761B .5px;
 	color: #FF761B;
 	border-radius: 5px;
 	padding: 5px 10px 5px 10px;
 	background: transparent;
+	cursor: pointer;
 	-webkit-transition: all 0.8s; 
   	transition: all 0.8s; 
 }
-.contact-info .button-wrapper button:hover{
+.contact-info .button-wrapper a:hover , .mobile-button a:hover{
 	
 	color: white;
 	background: #FF761B;
@@ -89,7 +114,7 @@ display: none;
 
 .navigation-bar{
 	z-index:1 ;
-	height: 70px;
+	min-height: 70px;
 	position: sticky;
 	top: 0%;
 	background: rgba(158, 158, 158, .12);
@@ -98,7 +123,7 @@ display: none;
 .navigation-bar .nav{
 	margin-left: 30px;
 	height: 100%;
-	align-items: center;
+	
 }
 
 .navigation-bar .nav li a{
@@ -109,11 +134,39 @@ display: none;
 	font-weight: 400;
 	
 }
-.navigation-bar ul{
+/*.navigation-bar ul{
 	display: none;
-}
+}*/
 .search-input{
 	right: 0;
+}
+.search-btn{
+	background-color: transparent;
+	border:none;
+	transition: all .5s;
+}
+.search-btn:hover{
+	transition: all .5s;
+	filter: brightness(0) saturate(100%) invert(12%) sepia(5%) saturate(5290%) hue-rotate(171deg) brightness(98%) contrast(84%);
+}
+.search-input{
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+.navigation-bar .search-input:focus{
+	background-color: transparent;
+	border: none;
+	outline: none;
+}
+
+.navigation-bar .nav-logo{
+	background-image:url('./biban tours.png');
+	background-size: contain;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	width:80px;
+	height:40px; 
 }
 
 
@@ -123,7 +176,6 @@ display: none;
 
 .landing{
 	height: 550px;
-	background: url("../../../UI elements/landing.jpg");
 	background-repeat: no-repeat;
 	background-size: 100% auto;
 	opacity: .8;
@@ -155,7 +207,7 @@ display: none;
 	bottom: 10%;
 	left: 10%;
 }
-.landing-button button{
+.landing-button a{
 	padding: 5px 15px 5px 15px;
 	border: solid white .5px;
 	border-radius: 5px;
@@ -169,8 +221,8 @@ display: none;
 	-webkit-transition: all 0.8s; 
   	transition: all 0.8s;
 }
-.landing-button button:hover{
-	
+.landing-button a:hover{
+	text-decoration: none;
 	color: black;
 	background: white;
 	-webkit-transition: all 0.8s; 
@@ -319,8 +371,7 @@ display: none;
 	width: 100%;
 	height: 100%;
 	position: relative;
-	flex-basis: 20%;
-	max-width: 20%;
+	
 	border-radius: 20px;
 	height: 180px;
 	padding: 0;
@@ -391,6 +442,7 @@ display: none;
 
 
 }
+
 .travel-info-container .city-name{
 	position: absolute;
 	left: 5%;
@@ -429,6 +481,8 @@ display: none;
 	top: 20%;
 	height: 70%;
 }
+
+
 .section-2 .section-2-title{
 	font-family: 'Oswald';
 	font-weight: 100;
@@ -448,7 +502,7 @@ display: none;
 	line-height: 1;
 	color: rgba(250,250,250,0.7);
 }
-.section-2 .button-wrapper button{
+.section-2 .button-wrapper a{
 	background: transparent;
 	padding: 5px 5% 5px 5%;
 	border:solid white 1px;
@@ -460,8 +514,8 @@ display: none;
 	-webkit-transition: all 0.8s; 
   	transition: all 0.8s; 
 }
-.section-2 .button-wrapper button:hover{
-	
+.section-2 .button-wrapper a:hover{
+	text-decoration: none;
 	color: black;
 	background: white;
 	-webkit-transition: all 0.8s; 
@@ -475,7 +529,7 @@ display: none;
 
 
 .offers{
-	height: 400px;
+	/*height: 400px;B*/
 }
 
 .offers:nth-child(3n+1){
@@ -497,12 +551,12 @@ display: none;
 	background-size: contain;
 	width: 60px;
 	height: 60px;
-	margin:5% 0 2% 0;
+	/*margin:5% 0 2% 0;*/
 }
-.offer-icon:nth-child(3){
+/*.offer-icon:nth-child(3){
 	
 	background-size: 150% 150%;
-	background-position: 50% 50%;
+	background-position: 50% 50%;*/
 }
 .offers .offer-desc{
 	font-family: 'Oxygen';
@@ -511,6 +565,7 @@ display: none;
 	margin: 5% 0 5% 0;
 	color: rgba(0,0,0,.7);
 }
+
 .offers-section-title{
 	font-family: 'Oswald';
 	font-size: 45px;
@@ -534,12 +589,12 @@ display: none;
 }
 
 .testimonials{
-	height: 300px;
+	min-height: 250px;
 }
 
 .testimonial-img{
-	width: 80px;
-	height: 80px;
+	width: 70px;
+	height: 70px;
 	border-radius: 50%;
 }
 
@@ -551,10 +606,12 @@ display: none;
 .testimonials .person-name{
 	font-family: 'Oswald';
 	font-weight: 100;
+	font-size: 22px;
 
 }
 .testimonials .person-badge{
 	color: rgba(0,0,0,.7);
+	font-size: 14px;
 }
 .testimonials-content-container{
 	width: 100%;
@@ -568,12 +625,16 @@ display: none;
 .testimonial-content{
 	width: 70%;
 	font-family: 'Oxygen';
-	font-size: 16px;
+	font-size: 14px;
 	padding: 5% 2% 10% 2%;
 	
 	/*letter-spacing: 1.2px;*/
 	color: rgba(0,0,0,.7);
 }
+
+/*.testimonials-carousel{
+	width: 80% !important;
+}*/
 
 
 /*--------------------------section-3------------------------*/
@@ -581,7 +642,7 @@ display: none;
 
 .section-3-container{
 	position: relative;
-	min-height: 250px;
+	
 	background-image: url("/media/UI elements/section-3.jpg");
 	background-repeat: no-repeat;
 	background-position: 50% 80%;
@@ -590,11 +651,7 @@ display: none;
 	color: white;
 	font-family: 'Oswald';
 }
-.section-3-container .section-3{
-	
-	height: 250px;
 
-}
 
 .section-3-title{
 
@@ -606,6 +663,7 @@ display: none;
 .section-3-title span{
 	font-weight: 400;
 }
+
 .section-3-button{
 	
 	background: transparent;
@@ -688,6 +746,14 @@ display: none;
   	transition: all 0.8s; 
 }
 
+.contact-form-container .contact-us-title{
+	font-family: 'Oswald';
+	font-size: 30px;
+	font-weight: 100;
+	text-align: center;
+
+}
+
 
 /*-------------------------footer---------------------*/
 
@@ -702,17 +768,17 @@ display: none;
 
 }
 
-
 .footer-title{
 	font-family: 'Oswald';
 	font-weight: 100;
 	color: white;
+	font-size: 22px;
 }
 .agency-description{
 	
 	font-family: 'Oxygen';
 	font-weight: 100;
-	font-size: 18px;
+	font-size: 16px;
 	color: rgba(255,255,255,.6);
 
 }
@@ -750,7 +816,7 @@ display: none;
 	margin-left: 10px;
 	display: inline;
 	font-family: 'Oxygen';
-	font-size: 18px;
+	font-size: 16px;
 	color: rgba(255,255,255,.6);
 }
 /*.footer-container .news-letter-container{
@@ -762,19 +828,33 @@ display: none;
 }*/
 .footer-container .news-letter .news-letter-description{
 	font-weight: 100;
+	font-size: 16px;
 }
 
-.news-letter .button-wrapper button{
+.news-letter  button{
 	border:solid white 1px;
-	border-radius: 5%;
+	border-radius: 5px;
 	color: white;
 	font-family: 'Oswald';
 	font-size: 22px;
 	font-weight: 100;
-	letter-spacing: 1.5px;
+	letter-spacing: 2px;
 	padding:5px 20px 5px 20px;
 	background:transparent;
+	transition: all .4s;
 
+}
+.news-letter  button:hover{
+	background:white;
+	color: #00A8B1;
+
+}
+.news-letter input {
+	font-family: 'Oxygen';
+	padding:10px 20px 10px 20px;
+	border:solid white 1px;
+	border-radius: 5px;
+	color: #252525;
 }
 
 
@@ -804,3 +884,310 @@ display: none;
 	width: 50px;
 	height: 50px;
 }
+
+
+
+/*-----------------------------------------footers---------------------------------------*/
+.upper-footer-title{
+	font-family: 'Oswald';
+	font-size: 35px;
+	font-weight: 100;
+	color: rgba(255,255,255,.9);
+}
+.upper-footer-container{
+	background-color: #167E83;
+}
+.upper-footer-container > div{
+	
+	min-height: 150px;
+}
+.upper-footer-section:nth-child(2){
+	border-left:solid rgba(255,255,255,.4) 1px; 
+	border-right:solid rgba(255,255,255,.4) 1px; 
+}
+.upper-footer-section .icon{
+	width:50px;
+	height:50px;
+	
+	
+
+}
+.upper-footer-section .info{
+	color: rgba(255,255,255,.7);
+	font-family: 'Oxygen';
+	font-weight: 100;
+	font-size: 22px;
+}
+.footer-container.under-footer-container{
+	clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
+	background: rgba(0,168,177,.7);
+	padding-top: 20px;
+	padding-bottom: 20px;
+}
+.footer-container.under-footer-container .contact-container .info{
+	color: white;
+	font-weight: bold;
+
+}
+.footer-container.under-footer-container .contact-container .info:hover{
+	text-decoration: underline;
+}
+
+
+
+
+
+/*-----------------------------------return-top---------------------------------*/
+
+
+.return-top{
+	text-decoration: none;
+	background-image: url("/media/UI elements/SVGs/return-top.svg");
+	background-color: #167E83;
+	background-size: 55% 55%;
+	background-position: 50% 50%;
+	background-repeat: no-repeat;
+	
+	width: 60px;
+	height: 60px;
+	position: fixed;
+	right: 5%;
+	bottom: 5%;
+	border-radius: 50%;
+	transition: all .4s;
+}
+.return-top:hover{
+	background-color: rgba(0,168,177,.7);
+}
+
+
+
+/*-----------------------------------------MediaQueries-----------------------------------*/
+
+
+
+
+@media only screen and (max-width: 992px){
+	
+
+	.landing{
+		background-size: cover;
+	}
+	/*-------------------------------------travelShowCaseMedia---------------------------------*/
+	.travel-showcase{
+		min-height: 300px;
+	}
+	.travel-showcase-title{
+
+	}
+
+
+	/*------------------------------------Section3Media--------------------------------*/
+
+
+	.section-3-title{
+		font-size: 35px;
+	}
+	.section-3-button{
+		font-size: 25px;
+	}
+	/*------------------------------------FooterMedia--------------------------------*/
+
+
+	.agency-description,.footer-container .info,.news-letter .news-letter-description{
+		font-size: 14px;
+	}
+	.footer-title{
+		font-size: 20px;
+	}
+	.footer-container .icon{
+		width: 25px;
+		height: 25px;
+	}
+
+	
+}
+
+@media only screen and (min-width: 1200px){
+	
+	.testimonial-img{
+		height: 80px;
+		width: 80px;
+		border-radius: 50%;
+	}
+	.testimonials .person-name{
+		font-size: 24px;
+	}
+	.testimonials .person-badge{
+		font-size: 14px;
+	}
+	.testimonial-content{
+		font-size: 14px;
+	}
+
+	/*------------------------------------FooterMedia--------------------------------*/
+
+
+	.agency-description,.footer-container .info,.news-letter .news-letter-description{
+		font-size: 18px;
+	}
+	.footer-title{
+		font-size: 24px;
+	}
+}
+
+@media only screen and (max-width: 580px){
+	/*-----------------------------LandingMedia-----------------------------*/
+
+	
+	.landing{
+		height: 400px;
+	}
+	.landing-title{
+		top: 20%;
+		
+	}
+	.landing .part-1,.landing .part-2{
+		font-size: 40px;
+	}
+	.landing-button {
+		bottom: 20%;
+	}
+	.landing-button a{
+		font-size: 22px;
+	}
+
+	/*------------------------------OffersMedia----------------------------*/
+
+
+	.offers:nth-child(3n+1){
+		background:white;
+	}
+	.offers:nth-child(2n){
+		background:rgba(158, 158, 158, .12);
+	}
+	.offers .offer-desc{
+		font-size: 14px;
+		color: rgba(0,0,0,.7);
+	}
+	.offers-section-title{
+		font-size: 30px;
+	}
+
+	
+
+}
+
+@media only screen and (max-width: 480px) {
+  
+	/*-----------------------------LandingMedia-----------------------------*/
+
+
+	.landing{
+		height: 350px;
+		background-size: cover;
+		background-position: 50% 50%;
+		background-repeat: no-repeat;	
+	}
+
+
+	/*-----------------------------Section2Media-----------------------------*/
+	.section-2{
+		min-height: 350px;
+	}
+	.section-2 .section-2-title{
+		font-size: 35px;
+	}
+	.section-2 .description{
+		font-size: 20px;
+	}
+	.section-2 .button-wrapper a{
+		font-size: 25px;
+	}
+
+	/*----------------------------TestimonialsMedia---------------------------*/
+
+	.testimonials-title{
+		font-size: 35px;
+	}
+	.testimonials .person-name{
+		font-size: 20px;
+	}
+	.testimonials .person-badge{
+		font-size: 12px;
+	}
+	.testimonial-content{
+		font-size: 12px;
+	}
+	.testimonials{
+		min-height: 200px;
+	}
+
+	
+}
+
+@media only screen and (max-width: 380px){
+	/*------------------------------travelShowCaseMedia-----------------------*/
+
+	.travel-showcase-title{
+		font-size: 28px;
+	}
+	.tours button{
+		font-size: 12px;
+	}
+	.travel-info-container .price{
+		font-size: 13px;
+	}
+	.travel-info-container .city-name{
+		font-size: 15px;
+	}
+
+	/*-----------------------------Section2Media-----------------------------*/
+
+	.section-2{
+		min-height: 350px;
+	}
+	.section-2 .section-2-title{
+		font-size: 26px;
+	}
+	.section-2 .description{
+		font-size: 16px;
+	}
+	.section-2 .button-wrapper a{
+		font-size: 20px;
+	}
+
+
+	/*----------------------------TestimonialsMedia---------------------------*/
+
+	.testimonial-img{
+		height: 50px;
+		width: 50px;
+		border-radius: 50%;
+	}
+	.testimonials-title{
+		font-size: 28px;
+	}
+	.testimonials .person-name{
+		font-size: 18px;
+	}
+	.testimonials .person-badge{
+		font-size: 10px;
+	}
+	.testimonial-content{
+		font-size: 10px;
+	}
+
+	/*----------------------------------------Section3Media--------------------------------------*/
+
+
+	.section-3-title{
+		font-size: 30px;
+	}
+	.section-3-button{
+		font-size: 20px;
+	}
+}
+
+
+

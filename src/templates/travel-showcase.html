@@ -1,11 +1,11 @@
 {% load l10n %}
-<div class="travel-showcase container-fluid mt-5 px-5">
-      <h1 class="travel-showcase-title text-center my-5 py-5">Les Meilleurs Tours</h1>
-      <div class="row justify-content-around mb-5">
+<div class="travel-showcase container-fluid mt-5 px-5 pb-5">
+      <h1 class="travel-showcase-title text-center my-lg-5 py-3 py-lg-5">Les Meilleurs Tours</h1>
+      <div class="mx-0 row justify-content-around mb-5 travel-showcase-carousel   col-md-12">
 
-        {% for voyage in voyages_1 %}
-
-          <div  class="tours col-md-2 col-sm-10 col-10" style="background-image:url({{voyage.image.url}})">
+        {% for voyage in voyages %}
+        <div class="tour-container col-xl-3 col-lg-4 col-md-6 col-sm-12 col-12 my-3">
+          <div  class="tours mx-2" style="background-image:url({{voyage.image.url}})">
             <div class="info-container">
               <div class="travel-info-container px-2">
                 <span class="city-name">{{voyage.destination}}</span>
@@ -18,29 +18,11 @@
               Reserver Maintenat
             </button>
           </div>
-
+        </div>
         {% endfor %}
         </div>
         
-      <div class="row justify-content-around">
-        
-          {% for voyage in voyages_2 %}
-            <div  class="tours col-md-2 col-sm-10 col-10" style="background-image:url({{voyage.image.url}})">
-            <div class="info-container">
-              <div class="travel-info-container px-2">
-                <span class="city-name">{{voyage.destination}}</span>
-                <span class="price">{{voyage.price}}DA</span>
-              </div>
-            </div>
-            <button>
-              Reserver Maintenat
-            </button>
-          </div>
-            
-
-          {% endfor %}
-
-      </div>
+      
       
     </div>
     

@@ -1,4 +1,6 @@
 from django.db import models
+from django.db.models import signals
+from django.core.mail import send_mass_mail
 from elbiban_tours.utilities import upload_image_path
 from django.contrib.auth import get_user_model
 from django.urls import reverse
@@ -7,7 +9,8 @@ User = get_user_model()
 
 class LandingImage(models.Model):
 	image 		= models.ImageField(upload_to=upload_image_path)
-	active		=models.BooleanField(default=False)
+	active		= models.BooleanField(default=False)
+	is_for_about= models.BooleanField(default=False)
 
 
 class GeneralInfo(models.Model):
@@ -17,6 +20,7 @@ class GeneralInfo(models.Model):
 	fax_number				= models.DecimalField(max_digits=9,decimal_places=0)
 	email 					= models.EmailField()
 	agency_description		= models.TextField()
+	agency_detailed_desc	= models.TextField(default="frghana")
 	location 				= models.CharField(max_length=100)
 	facebook_link			= models.CharField(max_length=100)
 	twitter_link			= models.CharField(max_length=100)
@@ -25,19 +29,28 @@ class GeneralInfo(models.Model):
 
 
 
+class Requirement(models.Model):
+	designation 		= models.CharField(max_length=200)
 
+	def __str__(self):
+		return self.designation
 
 class Service(models.Model):
 	designation		= models.CharField(max_length=50)
 	description		= models.TextField()
 	is_in_landing	= models.BooleanField(default=False)
 	svg				= models.FileField(upload_to=upload_image_path,null=True)
+	requirements	= models.ManyToManyField(Requirement,related_name='service',null=True,blank=True)
+	has_form 		= models.BooleanField(default=False)
+	is_in_section_1 = models.BooleanField(default=False)
+	is_on_about		= models.BooleanField(default=False)
+	form 			= models.CharField(max_length=30,null=True,blank=True)
 
 	def __str__(self):
 		return self.designation
 
 	def get_end_point(self):
-		return reverse("services")
+		return reverse("requirements",kwargs={"pk":self.pk})
 
 
 class FeedBack(models.Model):
@@ -76,17 +89,9 @@ class Voyage(models.Model):
 	def get_end_point(self):
 		return reverse("plane_ticket_demand",kwargs={"pk":self.pk})
 
-class ReservationVisa(models.Model):
-	destination		= models.CharField(max_length=50)
-	description 	= models.TextField()
-	price			= models.DecimalField(max_digits=10,decimal_places=2)
-	date 			= models.DateField(blank=True,null=True)
-	def __str__(self):
-		return "{}{}".format(self.destination,date)
 
-class VisaEtudeReservation(ReservationVisa):
-	country			= models.CharField(max_length=50)
-	Universty		= models.CharField(max_length=50)
+
+
 
 
 class Message(models.Model):
@@ -97,3 +102,39 @@ class Message(models.Model):
 	content 		= models.TextField()
 	def __str__(self):
 		return "{} {}".format(self.first_name,self.last_name)
+
+class NewsLetter(models.Model):
+	subject 			= models.CharField(max_length=200)
+	message 			= models.TextField()
+
+	def __str__(self):
+		return self.subject
+
+
+class NewsLetterMember(models.Model):
+	email 				= models.EmailField()
+
+	def __str__(self):
+		return self.email
+
+
+
+
+
+
+
+
+
+
+
+def send_newsletter(sender, instance, created, **kwargs):
+	members					= NewsLetterMember.objects.all()
+	sender_email 			= GeneralInfo.objects.all().first().email
+	receivers_list 			= [ member.email for member in members ]
+	data 					= (instance.subject,instance.message,sender_email,receivers_list)
+	send_mass_mail((data,),fail_silently=False)
+
+
+
+
+signals.post_save.connect(receiver=send_newsletter, sender=NewsLetter)

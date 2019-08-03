@@ -24,6 +24,14 @@
       .costum-modal .costum-modal-body{
         min-height: 10%;
       }
+      .costum-modal .costum-modal-body input{
+        color: #252525;
+      }
+      .costum-modal .costum-modal-body button{
+        font-family: 'Oswald';
+        font-size: 20px;
+        font-weight: 100;
+      }
       .costum-modal .costum-modal-footer{
         min-height: 10%;
         padding: 10px;
@@ -103,6 +111,9 @@
 #confirmation-modal{
   color:white;
 }
+#info-modal{
+  color:black;
+}
 
 #confirmation-modal.req-success{
   background-color: #00A8B1;
@@ -118,6 +129,17 @@
   color: white;
   transition: all .4s;
 }
+#info-modal button{
+  width: 50%;
+  border-color:#FF761B;
+  color: #FF761B;
+  transition: all .4s;
+}
+#info-modal button:hover{
+  color: white;
+  background-color:#FF761B;
+  transition: all .4s; 
+}
 #confirmation-modal.req-success button:hover{
   color: #00A8B1;
   background-color:white;
@@ -128,11 +150,27 @@
   background-color:white;
   transition: all .4s; 
 }
-#confirmation-modal .costum-modal-body{
+#confirmation-modal .costum-modal-body,#info-modal .costum-modal-body{
   font-family: 'Oxygen';
   font-size: 22px;
   font-weight: 100;
   text-align: center;
+}
+
+.pin{
+  width:25px;
+  height: 25px;
+  background-image: url("/media/UI elements/SVGs/pin.svg");
+  background-repeat: no-repeat;
+  background-size: contain;
+  filter: invert(52%) sepia(43%) saturate(6055%) hue-rotate(153deg) brightness(97%) contrast(101%);
+}
+.requirement-content {
+    font-family: 'Oxygen';
+    font-size: 20px;
+    font-weight: 100;
+    line-height: 1;
+
 }
 input[type="number"] {
   -webkit-appearance: textfield;

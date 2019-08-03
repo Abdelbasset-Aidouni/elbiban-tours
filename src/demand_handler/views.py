@@ -21,10 +21,12 @@ def visa_demand(request,pk=None):
 		print(form.cleaned_data)
 		form.save()
 		print("saved successfuly")
+		return JsonResponse({},status=200)
 
 	else:
 		print(form)
 		print("fail")
+		return JsonResponse({},status=400)
 	context = {
 		"form":form
 	}

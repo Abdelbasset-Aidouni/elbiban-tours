@@ -1,13 +1,13 @@
 <div class="footer-container container-fluid">
       
         <div class="row justify-content-around mb-5 flex-wrap">
-          <div class="col-md-3 col-10 my-2">
+          <div class="col-md-3 col-10 my-2 mt-5 mt-md-2">
             <h3 class="footer-title">El Biban Tours</h3>
             <div class="agency-description mt-5">
-              Donc hein que ils chez meme aux ete. Qu creerent premiere ca retablir en imberbes oh penetrer ennemies.
+              {{info.agency_description}}
             </div>
           </div>
-          <div class="col-md-3 col-10 my-2">
+          <div class="col-md-4 col-10 my-2">
             <h3 class="footer-title">Contact</h3>
             <div class="contact-container container">
               <div class="phone-info-container my-3 row">
@@ -15,7 +15,7 @@
                   
                 </div>
                 <div class="info">
-                  0 123 456 789
+                  {{info.phone_number}}
                 </div>
               </div>
               <div class="fax-info-container my-3 row">
@@ -23,7 +23,7 @@
                   
                 </div>
                 <div class="info">
-                   0 35 56 78 92
+                   {{info.fax_number}}
                 </div>
               </div>
               <div class="mail-info-container my-3 row">
@@ -31,7 +31,7 @@
                   
                 </div>
                 <div class="info">
-                  elbiban.tours@gmail.com
+                  {{info.email}}
                 </div>
               </div>
             </div>
@@ -42,23 +42,27 @@
                   
                 </div>
                 <div class="info">
-                    El Blad, Bordj Bou Arreridj
+                    {{info.location}}
                 </div>
               </div>
             </div>
           </div>
-          <div class="news-letter-container col-md-3 col-10 my-2">
+          <div class="news-letter-container col-md-4 col-10 my-2">
+            <h3 class="footer-title ml-3">News Letter</h3>
             <div class="news-letter container h-100">
-              <div class="row h-100 align-content-end">
+              <div class="row h-100 align-content-center">
                 <div class="container-fluid">
                   <div class="news-letter-description info row justify-content-start">
                     <p>Subscribe to our newsletter to stay up to date about new opportunites</p>
                   </div>
-                  <div class="button-wrapper row justify-content-center my-2">
-                    <button>
-                      Inscrir
-                    </button>
+                  <div class="news-letter-form row mx-1">
+                    <form>
+                      {% csrf_token %}
+                      <input class="w-100 my-2" name="email" type="email" placeholder="your email">
+                      <button type="submit" class="w-100" endpoint='{% url "newsletter" %}'>Souscrire</button>
+                    </form>
                   </div>
+                  
                 </div>
               </div>
               
@@ -68,15 +72,15 @@
         <div class="row social-media-info justify-content-start ">
           <div class="container col-sm-3 col-8">
             <div class="row justify-content-around">
-              <div class="social-media-icons">
+              <a href="{{info.facebook_link}}" target="_blank" class="social-media-icons">
             
-              </div>
-              <div class="social-media-icons">
+              </a>
+              <a href="{{info.twitter_link}}" target="_blank" class="social-media-icons">
                 
-              </div>
-              <div class="social-media-icons">
+              </a>
+              <a href="{{info.instagram_link}}" target="_blank" class="social-media-icons">
                 
-              </div>
+              </a>
             </div>
           </div>
           

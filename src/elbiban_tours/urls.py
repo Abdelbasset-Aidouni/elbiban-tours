@@ -17,14 +17,18 @@ from django.conf import settings
 from django.conf.urls.static import static
 from django.contrib import admin
 from django.urls import path,include
-from .views import index,voyage_page,services_page
+from .views import index,voyage_page,services_page,about_page
+
 
 urlpatterns = [
 	path('', index,name='home'),
     path('voyages/',voyage_page,name='voyages'),
 	path('demand/', include('demand_handler.urls'),name='demand'),
     path('services/',services_page,name='services'),
+    path('about/',about_page,name='about'),
     path('admin/', admin.site.urls),
+    path('amdinistration/',include('administration.urls'),name='administration'),
+    path('tracking/', include('tracking.urls')),
 ]
 
 

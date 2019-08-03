@@ -3,7 +3,7 @@
 
   
   var costumModals  = $(".costum-modal");
-  var chooseFileButton  = '<div><button class="btn btn-info d-inline" role="file-upload">coisir un fichier</button><input role="filename-display" type="text" class="form-control-plaintext d-inline px-2 w-50" readonly value="aucun fichier choisi"></div>';
+  var chooseFileButton  = '<div><button class="btn btn-info d-inline" role="file-upload">Choisir un fichier</button><input role="filename-display" type="text" class="form-control-plaintext d-inline px-2 w-50" readonly value="aucun fichier choisi"></div>';
   $.each(costumModals,(key,value) => {
           $(value).find("input").not("input[type=file]").addClass("form-control");
           $(value).find("input[type=file]").addClass("d-none");
@@ -28,18 +28,7 @@
         event.preventDefault();
         let modalLink    = String(this.getAttribute("modal"));
         let modalElement = $("#" + String(this.getAttribute("modal")));
-        let inputSet    = modalElement.find("input");
-        let fields      = {};
-
-        $.each(inputSet,(key,value) => {
-          fields[String($(value).attr("name"))] = $(value).val();
-        });
-        let form_is_valide = validateFields(fields);
-        if ( form_is_valide != true) {
-          setErrMessage(form_is_valide);
-          openModal("confirmation-modal",null,"req-failed",true);
-        }else{
-
+        let modalRole    = this.getAttribute("role");
         let spinner     = modalElement.parent().find(".costum-modal-spinner-container");
         var protocol    = location.protocol;
         var slashes     = protocol.concat("//");
@@ -47,6 +36,20 @@
         let endPoint    = this.getAttribute("endpoint");
         let formData    = $(this.parentElement.parentElement.parentElement).serialize();
         host            += ":" + window.location.port;
+
+        
+          let inputSet    = modalElement.find("input");
+          let fields      = {};
+          $.each(inputSet,(key,value) => {
+            fields[String($(value).attr("name"))] = $(value).val();
+          });
+          let form_is_valide = validateFields(fields);
+        
+        
+        if ( form_is_valide != true) {
+          setErrMessage(form_is_valide);
+          openModal("confirmation-modal",null,"req-failed",true);
+        }else{
         modalElement.css({"opacity":"0.8"});
         spinner.show();
         
@@ -74,7 +77,80 @@
             }
           });
         }
+      
+        
+      
       });
+
+      function appendInfoElements(element,data){
+        let bodyElement = $(element).find(".costum-modal-body");
+        
+        $(bodyElement).html("");
+        $(bodyElement).append('<div class="container"><div class="row"><div class="container content"></div></div></div>');
+        
+        bodyElement = $(bodyElement).find(".content");
+
+        
+        let content;
+        let htmlContent;
+        $.each(data, (key,value) =>{
+          content = value["designation"];
+
+          htmlContent = `<div class="row align-content-center requirement-container"><div class="pin d-inline-flex"></div><div class="requirement-content d-inline px-3">${content} </div></div>`;
+
+          $(bodyElement).append(htmlContent);
+
+        });
+        
+      }
+
+
+
+
+      function getInfo(element){
+
+            let modalLink    = String(element.getAttribute("modal"));
+            let modalElement = $("#" + modalLink);
+            
+            
+            let spinner     = modalElement.parent().find(".costum-modal-spinner-container");
+            var protocol    = location.protocol;
+            var slashes     = protocol.concat("//");
+            var host        = slashes.concat(window.location.hostname);
+            let endPoint    = element.getAttribute("endpoint");
+            
+            host            += ":" + window.location.port;
+            
+            spinner.show();
+            console.log(spinner);
+            $.ajax(
+              {
+                url: host + endPoint, 
+                method:"GET",
+                success: function(resulte){
+                            
+                            console.log("mriiigla belmsak",resulte);
+
+                            appendInfoElements(modalElement,resulte);
+                            
+                            spinner.hide();
+                            
+                            
+                            
+                            
+                            
+                },
+                error:function (err) {
+                            console.log("the err is ",err);
+                            modalElement.css({"opacity":"1"});
+                            spinner.hide();
+                            closeModal(modalLink);
+                            
+                            setErrMessage("une erreur inattendue s'est produite. veuillez réessayer ultérieurement");
+                            openModal("confirmation-modal",null,"req-failed");
+                }
+              });
+      }
 
 
 
@@ -98,11 +174,13 @@
 
 
       $(".modal-trigger").click(function (){
-        
+          let modalRole = this.getAttribute("role");
           let modalLink = this.getAttribute("modal");
           let endPoint  = this.getAttribute("endpoint");
+          if (modalRole == "info")  getInfo(this);
           if (endPoint) openModal(modalLink,endPoint)
           else openModal(modalLink);
+          
           
       });
 
@@ -145,6 +223,7 @@
           $("body").removeAttr('onkeydown');
           $("body").removeAttr('modal');
         }
+
         modalElement.fadeOut(300);
         modalContainer.fadeOut(250);
           setTimeout(

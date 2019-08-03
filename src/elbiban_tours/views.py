@@ -1,8 +1,8 @@
-from django.shortcuts import render
-from django.http import HttpResponse
+from django.shortcuts import render,reverse
+from django.core.paginator import Paginator
+from django.http import HttpResponse,JsonResponse
 from django.contrib.auth import authenticate, login,get_user_model
-from administration.models import Service,FeedBack,Voyage
-from administration.forms import MessageForm
+from administration.models import Service,FeedBack,Voyage,GeneralInfo,LandingImage
 from demand_handler.forms import (
 								VisaForm, 
 								VisaEtudeForm,
@@ -15,26 +15,24 @@ from demand_handler.forms import (
 
 User = get_user_model()
 def index(request):
-	msg_form		= MessageForm(request.POST or None)
-	if msg_form.is_valid():
-		msg_form.save()
-		return HttpResponse(msg_form.cleaned_data.get("content"))
+	general_info	= GeneralInfo.objects.all().first()
+	landing_image	= LandingImage.objects.filter(active=True).filter(is_for_about=False).first()
+	visa_form 		= VisaForm()
 
-		
-	
 	voyages			= Voyage.objects.all()
-	voyages_1		= voyages[:4]
-	voyages_2		= voyages[4:]
+	
 	feedbacks 		= FeedBack.objects.all() 
 	services 		= Service.objects.all()
-	services_1 		= services[:3]
-	services_2 		= services[3:]
+	services_1 		= services.filter(is_in_section_1=True)
+	services_2 		= services.filter(is_in_landing=True).filter(is_in_section_1=False)
 	context = {
-		"services_1":services_1,
-		"services_2":services_2,
-		"feedbacks":feedbacks,
-		"voyages_1":voyages_1,
-		"voyages_2":voyages_2
+		"landing_image"	:landing_image,
+		"info"			:general_info,
+		"services_1"	:services_1,
+		"services_2"	:services_2,
+		"feedbacks"		:feedbacks,
+		"voyages"		:voyages,
+		"visa_form"		:visa_form,
 
 
 	}
@@ -42,37 +40,40 @@ def index(request):
 
 
 def voyage_page(request):
+	general_info	= GeneralInfo.objects.all().first()
 	form 			= PlaneTicketForm(request.POST or None)
 	voyages 		= Voyage.objects.all()
+	paginated 		= False
+	if len(voyages) > 16 :
+		page 			= request.GET.get('page') or 1
+		paginated 		= True
+		paginator 		= Paginator(voyages, 16)
+		voyages 		= paginator.get_page(page)
 	context 		= {
+		"info":general_info,
 		'voyages':voyages,
 		'form':form,
+		'is_paginated': paginated,
 	}
 	return render(request,'voyage/voyage.html',context)
 
 
 def services_page(request):
-	services_objects 		= Service.objects.all()
-	visa_form 				= VisaForm(request.POST or None)
-	visa_etude_form			= VisaEtudeForm(request.POST or None)
-	hotel_form				= HotelReservationForm(request.POST or None)
-	contrat_travail_form	= ContratDeTravailForm(request.POST or None)
-	credit_card_form		= CreditCardForm(request.POST or None)
-	immigration_form		= ImmigrationForm(request.POST or None)
-	plane_ticket_form		= PlaneTicketForm(request.POST or None)
-	services 				= [
-		(services_objects[4],visa_form),
-		(services_objects[3],visa_etude_form),
-		(services_objects[0],hotel_form),
-		(services_objects[2],contrat_travail_form),
-		(services_objects[1],credit_card_form),
-		(services_objects[5],plane_ticket_form),
-		(services_objects[6],immigration_form),
-
-	]
+	general_info						= GeneralInfo.objects.all().first()
+	services_objects 					= Service.objects.all().filter(has_form=True)
+	services_without_form				= Service.objects.all().filter(has_form=False)
+	forms 								= {}
+	forms["visa_demand"] 				= VisaForm(request.POST or None)
+	forms["visa_etude_demand"]			= VisaEtudeForm(request.POST or None)
+	forms["hotel_reservation_demand"]	= HotelReservationForm(request.POST or None)
+	forms["contrat_travail_demand"]		= ContratDeTravailForm(request.POST or None)
+	forms["credit_card_demand"]			= CreditCardForm(request.POST or None)
+	forms["plane_ticket_demand"]		= PlaneTicketForm(request.POST or None)
+	services 							= [ (service,forms[service.form],reverse(service.form)) for service in services_objects ]
 	print(services_objects)
-	services_without_form	= []
+	
 	context 				= {
+		"info":general_info,
 		"services" : services,
 		"services_without_form" : services_without_form,
 	}
@@ -81,4 +82,14 @@ def services_page(request):
 	return render(request,"services/services.html",context)
 
 
-	
+def about_page(request):
+	landing_image			= LandingImage.objects.filter(active=True).filter(is_for_about=True).first()
+	general_info			= GeneralInfo.objects.all().first()
+	services 				= Service.objects.all().filter(is_on_about=True)[:8]
+	context 				= {
+		"landing_image":landing_image,
+		"services":services,
+		"info":general_info,
+	}
+	print(services)
+	return render(request,"about/about.html",context)

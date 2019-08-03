@@ -39,10 +39,12 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'demand_handler',
     'administration',
-    'accounts'
+    'accounts',
+    'tracking',
 ]
 
 MIDDLEWARE = [
+    'tracking.middleware.VisitorTrackingMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -134,3 +136,12 @@ STATIC_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn","static_root"
 
 MEDIA_ROOT = os.path.join(os.path.dirname(BASE_DIR), "static_cdn","media_root")
 
+
+
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_USE_TLS = True
+EMAIL_PORT = 587
+EMAIL_HOST_USER = 'laidaabdelbasset@gmail.com'
+EMAIL_HOST_PASSWORD = 'LAIDANADALINA24011999'

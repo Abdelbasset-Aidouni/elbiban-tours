@@ -5,9 +5,11 @@ from .models import (
 				Service,
 				FeedBack,
 				Voyage,
-				ReservationVisa,
-				VisaEtudeReservation,
-				Message
+				
+				Message,
+				Requirement,
+				NewsLetter,
+				NewsLetterMember
 				)
 
 
@@ -16,6 +18,9 @@ admin.site.register(GeneralInfo)
 admin.site.register(Service)
 admin.site.register(FeedBack)
 admin.site.register(Voyage)
-admin.site.register(ReservationVisa)
-admin.site.register(VisaEtudeReservation)
+
+
 admin.site.register(Message)
+admin.site.register(Requirement)
+admin.site.register(NewsLetter)
+admin.site.register(NewsLetterMember)
