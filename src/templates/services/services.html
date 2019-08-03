@@ -11,18 +11,18 @@
 <div class="services-container container-fluid">
         <h3 class="w-100 text-capitalize text-center my-3 services-container-title">Services</h3>
         <hr class="w-75 text-center">
-        <div class="row justify-content-around  col-10 col-sm-12 mx-auto main-services-carousel">
+        <div class="row justify-content-around col-10 col-sm-12 col-md-10 col-lg-12 mx-auto main-services-carousel">
             {% for service in services %}
-                <div class="service-container col-sm-5 container-fluid col-md-3 my-4 ">
+                <div class="service-container col-sm-5 container-fluid col-md-3 col-lg-4 col-xl-3 my-4 ">
                     <div class="row align-content-between service-inner-container w-100 h-100 mx-1 my-0">
                         <div class="service-content row justify-content-center my-4">
                             <div class="service-icon-container container m-3">
                                 <div class="row justify-content-center">
-                                    <img class="sevice-icon" src="{{service.0.svg.url}}" width="70" height="70" alt="">
+                                    <img class="service-icon" src="{{service.0.svg.url}}" width="70" height="70" alt="">
                                 </div>
                             </div>
                             
-                            <h3 class="service-title">{{service.0.designation}}</h3>
+                            <h3 class="service-title w-100 text-center">{{service.0.designation}}</h3>
                             <hr class="w-75 text-center">
                             <div class="description text-center px-4">
                                 {{service.0.description}}
@@ -42,16 +42,16 @@
                 </div>
             {% endfor %}
             {% for service in services_without_form %}
-                <div class="service-container container-fluid col-sm-5 col-md-3 my-4">
+                <div class="service-container col-sm-5 container-fluid col-md-3 col-lg-4 col-xl-3 my-4 ">
                     <div class="row align-content-between service-inner-container w-100 h-100 mx-1 my-0">
                         <div class="service-content row justify-content-center my-4">
                             <div class="service-icon-container container">
                                 <div class="row justify-content-center m-3">
-                                    <img class="sevice-icon" src="{{service.svg.url}}" width="70" height="70" alt="">
+                                    <img class="service-icon" src="{{service.svg.url}}" width="70" height="70" alt="">
                                 </div>
                             </div>
                             
-                            <h3 class="service-title">{{service.designation}}</h3>
+                            <h3 class="service-title w-100 text-center">{{service.designation}}</h3>
                             <hr class="w-75 text-center">
                             <div class="description text-center px-4">
                                 {{service.description}}

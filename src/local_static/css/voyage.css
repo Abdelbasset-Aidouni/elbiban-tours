@@ -12,18 +12,19 @@
 .voyages-container .voyage-container{
 	box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 	padding: 0;
-	max-width: 22%;
+	
 	margin:10px;
-	min-height: 200px;
+	height: 200px;
 	position: relative;
 	border-radius: 5px;
+
 }
 .voyage-image{
 	width: 100%;
 	background-image: url('tour-5.jpg');
 	background-size: 100% 100%;
 	background-repeat: no-repeat;
-	height: 85%;
+	height: 70%;
 	position: relative;
 	border-radius: 5px 5px 0px 0px;
 	clip-path: polygon(0 0, 100% 0, 100% 86%, 0% 100%);
@@ -46,19 +47,19 @@
 	font-weight: 100;
 	transform: translate(-50%, -50%);
   	-ms-transform: translate(-50%, -50%);
-  	-webkit-transition: all 0.8s; 
-  	transition: all 0.8s; 
+  	-webkit-transition: all 0.5s; 
+  	transition: all 0.5s; 
 }
  .voyage-container:hover .voyage-image button{
 	display: block;
-	-webkit-transition: all 0.8s; 
-  	transition: all 0.8s; 
+	-webkit-transition: all 0.5s; 
+  	transition: all 0.5s; 
 }
 .voyage-image:hover button:hover{
 	background-color: black;
 	color: white;
-	-webkit-transition: all 0.8s; 
-  	transition: all 0.8s; 
+	-webkit-transition: all 0.5s; 
+  	transition: all 0.5s; 
 }
 .voyage-info-container{
 	position: absolute;
@@ -67,8 +68,67 @@
 .voyage-info-container .row:nth-child(2) span:nth-child(1){
 	font-family: 'Oxygen';
 	font-size: 17px;
+	font-weight: 400;
+}
+.voyage-info-container .row:nth-child(3) span:nth-child(1){
+	font-family: 'Oxygen';
+	font-size: 17px;
 	font-weight: 200;
 }
 
 
 
+		/*-------------------------------Media-Queries------------------------------------*/
+
+
+
+@media screen and (max-width: 1200px){
+	.voyage-image button{
+		font-size: 14px;
+	}
+	.voyage-info-container .row:nth-child(n+2) span:nth-child(1){
+		font-size: 16px;
+	}
+	.voyage-info-container .row:nth-child(n+2) span:nth-child(2){
+		font-size: 15px;
+	}
+}
+
+
+@media screen and (max-width: 992px){
+	.voyage-image button{
+		font-size: 14px;
+	}
+	.voyage-info-container .row:nth-child(n+2) span:nth-child(1){
+		font-size: 16px;
+	}
+	.voyage-info-container .row:nth-child(n+2) span:nth-child(2){
+		font-size: 14px;
+	}
+	.voyage-container-title{
+		font-size: 35px;
+	}
+}
+
+
+
+@media screen and (max-width: 580px){
+	.voyage-container-title{
+		font-size: 30px;
+	}
+}
+
+
+@media screen and (max-width: 480px){
+	
+}
+
+
+@media screen and (max-width: 380px){
+	.voyage-info-container .row:nth-child(n+2) span:nth-child(1){
+		font-size: 14px;
+	}
+	.voyage-info-container .row:nth-child(n+2) span:nth-child(2){
+		font-size: 12px;
+	}
+}

@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import JsonResponse
 from django.core.serializers import serialize
 from django.core.serializers.json import DjangoJSONEncoder
-from .forms import MessageForm,NewsLetterForm
+from .forms import MessageForm,NewsLetterForm,TestFormKhra
 from .models import Requirement
 
 
@@ -41,6 +41,16 @@ def get_requirements(request,pk):
 
 
 
+def test(request):
+	print(request.POST)
+	form = TestFormKhra(request.POST or None)
+	if form.is_valid():
+		form.save()
+		print(form)
+		return JsonResponse({},status=200)
+	print(form)
+	return JsonResponse({"msg": "rak g3artha"},status=400)
+	return render(request,'test.html',{"form",form})
 
 
 

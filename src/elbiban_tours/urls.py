@@ -27,7 +27,7 @@ urlpatterns = [
     path('services/',services_page,name='services'),
     path('about/',about_page,name='about'),
     path('admin/', admin.site.urls),
-    path('amdinistration/',include('administration.urls'),name='administration'),
+    path('administration/',include('administration.urls'),name='administration'),
     path('tracking/', include('tracking.urls')),
 ]
 

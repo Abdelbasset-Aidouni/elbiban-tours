@@ -82,12 +82,13 @@ class Voyage(models.Model):
 	availability= models.CharField(max_length=20,choices=AVAILABILITY,default=AVAILABLE)
 	timestamp	= models.DateField(auto_now_add=False)
 	best		= models.BooleanField(default=False)
+	dure 		= models.CharField(max_length=20,default="15 jours")
 
 	def __str__(self):
 		return self.destination
 
 	def get_end_point(self):
-		return reverse("plane_ticket_demand",kwargs={"pk":self.pk})
+		return reverse("voyage_demand",kwargs={"pk":self.pk})
 
 
 
@@ -100,6 +101,7 @@ class Message(models.Model):
 	phone_number 	= models.DecimalField(max_digits=10,decimal_places=0)
 	email 			= models.EmailField()
 	content 		= models.TextField()
+	timestamp		= models.DateField(auto_now_add=True)
 	def __str__(self):
 		return "{} {}".format(self.first_name,self.last_name)
 
@@ -118,6 +120,9 @@ class NewsLetterMember(models.Model):
 		return self.email
 
 
+
+class TestModelKhra(models.Model):
+	image 			= models.ImageField(upload_to=upload_image_path,null=True)
 
 
 

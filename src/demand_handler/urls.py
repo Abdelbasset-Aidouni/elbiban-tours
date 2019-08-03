@@ -7,7 +7,7 @@ from .views import (
 			immigration_demand,
 			credit_card_demand,
 			plane_ticket_demand,
-			
+			voyage_demand
 			)
 
 urlpatterns = [
@@ -17,7 +17,8 @@ urlpatterns = [
 	path('hotel-reservation/', hotel_reservation_demand,name='hotel_reservation_demand'),
 	path('immigration/', immigration_demand,name='immigration_demand'),
 	path('plane-ticket/', plane_ticket_demand,name='plane_ticket_demand'),
-	re_path(r'^plane-ticket/(?P<pk>\d+)/$', plane_ticket_demand,name="plane_ticket_demand"),
+	re_path(r'^voyage/(?P<pk>\d+)/$', voyage_demand,name="voyage_demand"),
+	path('voyage/', voyage_demand,name="voyage_demand"),
 	path('credit-card/', credit_card_demand,name='credit_card_demand'),
 	
     

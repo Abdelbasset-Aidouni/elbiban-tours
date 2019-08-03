@@ -10,7 +10,9 @@ from demand_handler.forms import (
 								ContratDeTravailForm,
 								CreditCardForm,
 								ImmigrationForm,
-								PlaneTicketForm
+								PlaneTicketForm,
+								VoyageServiceForm,
+								VoyageForm
 								)
 
 User = get_user_model()
@@ -41,7 +43,7 @@ def index(request):
 
 def voyage_page(request):
 	general_info	= GeneralInfo.objects.all().first()
-	form 			= PlaneTicketForm(request.POST or None)
+	form 			= VoyageForm(request.POST or None)
 	voyages 		= Voyage.objects.all()
 	paginated 		= False
 	if len(voyages) > 16 :
@@ -69,6 +71,7 @@ def services_page(request):
 	forms["contrat_travail_demand"]		= ContratDeTravailForm(request.POST or None)
 	forms["credit_card_demand"]			= CreditCardForm(request.POST or None)
 	forms["plane_ticket_demand"]		= PlaneTicketForm(request.POST or None)
+	forms["voyage_demand"]				= VoyageServiceForm(request.POST or None)
 	services 							= [ (service,forms[service.form],reverse(service.form)) for service in services_objects ]
 	print(services_objects)
 	

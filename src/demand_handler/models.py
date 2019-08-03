@@ -5,12 +5,25 @@ from administration.models import Voyage
 User = get_user_model()
 
 class Demand(models.Model):
+	EN_ATTENTE 	= 'at'
+	SERVI		= 'sv'
+	EN_COURS	= 'ec'
+	REFUSE		= 'rf'
+
+	ETAT_CHOICES = {
+		(EN_ATTENTE,'En Attente'),
+		(EN_COURS,'En Cours'),
+		(SERVI,'Servi'),
+		(REFUSE,'Refusé')
+		
+	}
 	user 			= models.ForeignKey(User,on_delete=models.CASCADE,blank=True,null=True)
 	slug 			= models.SlugField(max_length=50,blank=True)
 	first_name 		= models.CharField(max_length=50,blank=True)
 	last_name 		= models.CharField(max_length=50)
 	phone_number 	= models.DecimalField(max_digits=10,decimal_places=0)
 	timestamp		= models.DateField(auto_now_add=True)
+	etat			= models.CharField(max_length=2,choices=ETAT_CHOICES,default=EN_ATTENTE)
 
 	def __str__(self):
 		return "{} {}".format(self.first_name,self.last_name)
@@ -22,7 +35,7 @@ class Visa(Demand):
 
 class VisaEtude(Visa):
 	
-	country 		= models.CharField(max_length=50,default="spain")
+	country 		= models.CharField(max_length=50,default="Espagne")
 
 class Hebergement(Demand):
 	country 		= models.CharField(max_length=50,default="Canada")
@@ -45,7 +58,11 @@ class ContratDeTravail(Demand):
 
 
 class PlaneTicket(Demand):
-	destination 		= models.ForeignKey(Voyage,on_delete=models.CASCADE,null=True)
+	destination 		= models.CharField(max_length=40,default="paris")
+
+
+class VoyageDemand(Demand):
+	voyage 				= models.ForeignKey(Voyage,on_delete=models.CASCADE,null=True)
 
 class HotelReservation(Demand):
 	location 			= models.CharField(max_length=50)

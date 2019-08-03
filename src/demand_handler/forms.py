@@ -9,7 +9,7 @@ from .models import (
 				CreditCard,
 				ContratDeTravail,
 				HotelReservation,
-				
+				VoyageDemand,
 				)
 class DemandForm(forms.ModelForm):
     class Meta:
@@ -28,13 +28,15 @@ class VisaForm(DemandForm):
 		fields 					= DemandForm.Meta.fields + ('passport','destination') 
 		labels 					= DemandForm.Meta.labels
 		labels["passport"]		= 'Passport Scané'
+		labels["destination"]	= 'Pays'
 
 class VisaEtudeForm(VisaForm):
 	class Meta:
 		model 					= VisaEtude
-		fields 					= VisaForm.Meta.fields + ('country',) 
-		labels 					= VisaForm.Meta.labels
+		fields 					= DemandForm.Meta.fields + ('country','passport') 
+		labels 					= DemandForm.Meta.labels
 		labels["country"]		= 'Pays'
+		labels["passport"]		= 'Passport Scané'
 
 class CreditCardForm(DemandForm):
 	class Meta:
@@ -54,7 +56,19 @@ class ImmigrationForm(DemandForm):
 class PlaneTicketForm(DemandForm):
 	class Meta:
 		model 		= PlaneTicket
+		fields 		= DemandForm.Meta.fields + ('destination',)
+		labels 		= DemandForm.Meta.labels
+
+class VoyageForm(DemandForm):
+	class Meta:
+		model 		= VoyageDemand
 		fields 		= DemandForm.Meta.fields
+		labels 		= DemandForm.Meta.labels
+
+class VoyageServiceForm(DemandForm):
+	class Meta:
+		model 		= VoyageDemand
+		fields 		= DemandForm.Meta.fields + ('voyage',)
 		labels 		= DemandForm.Meta.labels
 
 

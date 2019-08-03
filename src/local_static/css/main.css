@@ -246,45 +246,47 @@ display: none;
 	
 }
 .section-icons{
-	
+	width: 65px;
+	height: 70px;
 	background-repeat: no-repeat;
 	background-size: contain;
 
 }
-.section-icon-1{
-	background: url("../../../UI elements/SVGs/plane.svg");
+/*.section-icon-1{
+	
 	width: 65px;
 	height: 70px;
 	background-repeat: no-repeat;
 	background-size: contain;
 }
 .section-icon-2{
-	background: url("../../../UI elements/SVGs/visa.svg");
+	
 	width: 65px;
 	height: 70px;
 	background-repeat: no-repeat;
 	background-size: contain;
 }
 .section-icon-3{
-	background: url("../../../UI elements/SVGs/etude.svg");
+	
 	width: 85px;
 	height: 70px;
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: 50% 90%;	
 	
-}
+}*/
 
 
-.section-contents{
+.section-content{
 	padding: 20px 15% 20px 15%;
 	text-align: center;
-	font-size: 20px;
+	font-size: 16px;
 	font-family: 'Oxygen';
 	color: rgba(0,0,0,.4);
 
 
 }
+
 .section-title{
 	font-family: 'Oswald';
 	font-size: 30px;
@@ -890,7 +892,7 @@ display: none;
 /*-----------------------------------------footers---------------------------------------*/
 .upper-footer-title{
 	font-family: 'Oswald';
-	font-size: 35px;
+	font-size: 30px;
 	font-weight: 100;
 	color: rgba(255,255,255,.9);
 }
@@ -906,8 +908,8 @@ display: none;
 	border-right:solid rgba(255,255,255,.4) 1px; 
 }
 .upper-footer-section .icon{
-	width:50px;
-	height:50px;
+	width:40px;
+	height:40px;
 	
 	
 
@@ -916,7 +918,7 @@ display: none;
 	color: rgba(255,255,255,.7);
 	font-family: 'Oxygen';
 	font-weight: 100;
-	font-size: 22px;
+	font-size: 19px;
 }
 .footer-container.under-footer-container{
 	clip-path: polygon(0 0, 100% 0%, 100% 100%, 0% 100%);
@@ -965,7 +967,9 @@ display: none;
 /*-----------------------------------------MediaQueries-----------------------------------*/
 
 
+@media only screen and (max-width: 1200px){
 
+}
 
 @media only screen and (max-width: 992px){
 	
@@ -973,6 +977,9 @@ display: none;
 	.landing{
 		background-size: cover;
 	}
+
+
+
 	/*-------------------------------------travelShowCaseMedia---------------------------------*/
 	.travel-showcase{
 		min-height: 300px;
@@ -1004,6 +1011,32 @@ display: none;
 		width: 25px;
 		height: 25px;
 	}
+	.footer-container .social-media-info .social-media-icons{
+		width: 35px;
+		height: 35px;
+	}
+	.news-letter  button{
+		font-size: 18px;
+	}
+	.news-letter input{
+		padding: 5px 10px 5px 10px;
+	}
+
+
+
+	.upper-footer-section .icon{
+		width:30px;
+		height:30px;
+	}
+	.upper-footer-title{
+		font-size: 25px;
+	}
+	.upper-footer-section .info{
+		font-size: 16px;
+	}
+	.upper-footer-container > div{
+		min-height: 100px;
+	}
 
 	
 }
@@ -1034,6 +1067,18 @@ display: none;
 	.footer-title{
 		font-size: 24px;
 	}
+
+
+	.upper-footer-section .icon{
+		width:50px;
+		height:50px;
+	}
+	.upper-footer-title{
+		font-size: 35px;
+	}
+	.upper-footer-section .info{
+		font-size: 22px;
+	}
 }
 
 @media only screen and (max-width: 580px){
@@ -1045,8 +1090,21 @@ display: none;
 	}
 	.landing-title{
 		top: 20%;
-		
 	}
+
+
+	.section-icons{
+		width: 55px;
+		height:60px;
+	}
+	.section-title{
+		font-size: 25px;
+	}
+	.section-content{
+		font-size: 14px;
+	}
+
+
 	.landing .part-1,.landing .part-2{
 		font-size: 40px;
 	}
@@ -1073,7 +1131,11 @@ display: none;
 	.offers-section-title{
 		font-size: 30px;
 	}
+	
 
+	.contact-form label{
+		font-size: 14px;
+	}
 	
 
 }

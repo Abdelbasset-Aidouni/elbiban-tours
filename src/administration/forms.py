@@ -1,5 +1,5 @@
 from django import forms
-from .models import Message,NewsLetterMember
+from .models import Message,NewsLetterMember,TestModelKhra
 
 class MessageForm(forms.ModelForm):
 	class Meta:
@@ -16,3 +16,11 @@ class NewsLetterForm(forms.ModelForm):
 	class Meta:
 		model = NewsLetterMember
 		fields = ('email',)
+
+
+
+
+class TestFormKhra(forms.ModelForm):
+	class Meta:
+		model 		= TestModelKhra
+		fields 		= ('__all__')

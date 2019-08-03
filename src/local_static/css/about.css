@@ -33,6 +33,7 @@
 	width: 50px;
 	height: 10px;
 }
+
 .about-landing-title-2{
 	font-family: 'Oxygen';
 	font-weight: 100;
@@ -135,7 +136,7 @@
 }
 
 /*-----------------------------------------footers---------------------------------------*/
-.upper-footer-title{
+/*.upper-footer-title{
 	font-family: 'Oswald';
 	font-size: 35px;
 	font-weight: 100;
@@ -170,5 +171,60 @@
 	background: rgba(0,168,177,.7);
 	padding-top: 20px;
 	padding-bottom: 20px;
+}*/
+
+
+
+
+		/*-------------------------------Media-Queries------------------------------------*/
+
+
+
+@media screen and (max-width: 1200px){
+	.description-section-desc{
+		font-size: 18px;
+	}
+	.landing-image{
+		height: 250px;
+	}
 }
 
+
+@media screen and (max-width: 992px){
+	.description-section-desc{
+		font-size: 16px;
+	}
+	.description-section-title,.contact-info-section-title,.services-section-title{
+		font-size: 35px;
+	}
+	.about-landing-title-1 h4{
+		font-size: 20px;
+	}
+	.about-landing-title-2{
+		font-size: 30px;
+	}
+}
+
+
+
+@media screen and (max-width: 580px){
+	.description-section-desc{
+		font-size: 14px;
+	}
+	.description-section-title,.contact-info-section-title,.services-section-title{
+		font-size: 30px;
+	}
+	.landing-image{
+		height: 200px;
+	}
+}
+
+
+@media screen and (max-width: 480px){
+	
+}
+
+
+@media screen and (max-width: 380px){
+	
+}

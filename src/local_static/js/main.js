@@ -146,14 +146,13 @@ $('.main-services-carousel').slick({
     prevArrow: "<img class='a-left control-c prev slick-prev' src='/media/UI elements/SVGs/left-arrow.svg'>",
     nextArrow: "<img class='a-right control-c next slick-next' src='/media/UI elements/SVGs/right-arrow.svg'>",
     responsive: [
-      {
-        breakpoint: 1200,
-        settings: "unslick"
-      },
+      // {
+      //   breakpoint: 1200,
+      //   settings: "unslick"
+      // },
       {
         breakpoint: 998,
-        settings  : {slidesToShow: 3,
-          slidesToScroll: 1}
+        settings  : "unslick"
       },
 
       {

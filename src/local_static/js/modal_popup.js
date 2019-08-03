@@ -1,4 +1,3 @@
-      
 
 
   
@@ -6,11 +5,13 @@
   var chooseFileButton  = '<div><button class="btn btn-info d-inline" role="file-upload">Choisir un fichier</button><input role="filename-display" type="text" class="form-control-plaintext d-inline px-2 w-50" readonly value="aucun fichier choisi"></div>';
   $.each(costumModals,(key,value) => {
           $(value).find("input").not("input[type=file]").addClass("form-control");
+           $(value).find("select").addClass("form-control");
           $(value).find("input[type=file]").addClass("d-none");
           $(value).find("input[type=file]").after(chooseFileButton);
     });
 
   $(".costum-modal").find("button[role=file-upload]").click(function (event) {
+    event.preventDefault();
     let inputFile = $(this).parent().parent().find("input[type=file]");
     
     inputFile.click();
@@ -19,6 +20,7 @@
   });
   $(".costum-modal").find("input[type=file]").on("change",function (event) {
     $(this).parent().find("input[role='filename-display']").val($(this).val().substr($(this).val().lastIndexOf("\\")+1));
+
   })
 
   
@@ -34,7 +36,15 @@
         var slashes     = protocol.concat("//");
         var host        = slashes.concat(window.location.hostname);
         let endPoint    = this.getAttribute("endpoint");
-        let formData    = $(this.parentElement.parentElement.parentElement).serialize();
+        
+
+        let formData    = new FormData(this.parentElement.parentElement.parentElement);
+
+        
+      
+        
+
+        
         host            += ":" + window.location.port;
 
         
@@ -44,6 +54,7 @@
             fields[String($(value).attr("name"))] = $(value).val();
           });
           let form_is_valide = validateFields(fields);
+          
         
         
         if ( form_is_valide != true) {
@@ -60,15 +71,18 @@
             method:"POST",
             data:formData,
             success: function(resulte){
-                        console.log("mriiigla belmsak",resulte);
+                        
                         modalElement.css({"opacity":"1"});
                         spinner.hide();
                         closeModal(modalLink);
                         setSuccessMsg();
                         openModal("confirmation-modal",null,"req-success");
             },
+            processData: false, 
+            contentType: false,
+            cache:false,
             error:function (err) {
-                        console.log("the err is ",err);
+                        
                         modalElement.css({"opacity":"1"});
                         spinner.hide();
                         closeModal(modalLink);
@@ -237,16 +251,52 @@
 
 
       function phoneNumberValidator(field){
+        if (field == null) return false;
         if (String(field)[0] != 0) return false;
+
         if (typeof parseInt(field) != "number")  return false;
         console.log("field is a number");
         if (field.toString().length != 10 ) return false;
         
         return true;
       }
+      function textFieldsValidator(field){
+          console.log(field);
+          
+          if (field == null || String(field) == ""  ||  String(field) == " " ) {
+            console.log("rah lga field vide");
+           return false; 
+          }
+          return true;
+      }
+
 
       function validateFields(fields){
-        if (!phoneNumberValidator(fields["phone_number"])) return "svp entrer un numéro de telephone valide";
+          for (let key in fields){
+
+            if ( key == "first_name" && !textFieldsValidator(fields["first_name"]) ) {
+              console.log("first_name verified inner");
+              return "svp entre votre Nom";
+              }
+          
+            if (key == "last_name" && !textFieldsValidator(fields["last_name"])){
+              return "svp entre votre Prénom";
+            }
+
+            if (key == "phone_number" && !phoneNumberValidator(fields["phone_number"])) {
+                return "svp entrer un numéro de telephone valide";
+            }
+            if (key == "destination" && !textFieldsValidator(fields["destination"])){
+              return "svp spécifier votre destination";
+            }
+            if (key == "country" && !textFieldsValidator(fields["country"])){
+              return "svp spécifier le pays ";
+            }
+            if (key == "location" && !textFieldsValidator(fields["location"])){
+              return "svp spécifier l'Emplacement ";
+            }
+          }
+
         return true;
       }
 
